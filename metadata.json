@@ -64,6 +64,16 @@
           "type": "xsd:string"
         }
       ]
+    },
+    {
+      "url": "http://users.ugent.be/~bjdmeest/function/grel.ttl#length",
+      "name": "length",
+      "parameters": [
+        {
+          "url": "http://users.ugent.be/~bjdmeest/function/grel.ttl#valueParameter",
+          "type": "xsd:string"
+        }
+      ]
     }
   ]
 }

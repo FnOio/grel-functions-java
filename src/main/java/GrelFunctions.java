@@ -26,6 +26,10 @@ public class GrelFunctions {
         return valueParameter.toUpperCase();
     }
 
+    public static int length(String valueParameter) {
+        return valueParameter.length();
+    }
+
     public static String escape(String valueParameter, String modeParameter) {
         String mode = modeParameter.toLowerCase();
         if (mode.equals("html")) {
