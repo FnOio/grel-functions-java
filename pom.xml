@@ -4,9 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>be.ugent.mmlab.fno</groupId>
-    <artifactId>Functions</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <groupId>io.fno</groupId>
+    <artifactId>grel</artifactId>
+    <version>0.2.0</version>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -34,7 +39,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>GrelFunctions</mainClass>
+                            <mainClass>GrelFunctionsCustom</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

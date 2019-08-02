@@ -1,84 +1,57 @@
-import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 
-import java.io.UnsupportedEncodingException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * GREL Functions
  *
  * @author bjdmeest
  */
-public class GrelFunctions {
+public class GrelFunctionsCustom {
 
     public static boolean isSet(String valueParameter) {
         return !StringUtils.isEmpty(valueParameter);
-    }
-
-    public static boolean contains(String valueParameter, String subStringParameter) {
-        return valueParameter.contains(subStringParameter);
     }
 
     public static boolean booleanMatch(String valueParameter, String regexParameter) {
         return valueParameter.matches(regexParameter);
     }
 
-    public static String toUppercase(String valueParameter) {
-        return valueParameter.toUpperCase();
+
+    /**
+     * Returns the string obtained by joining two strings `s1` and `s2` with the separator `sep`.
+     * For example, `join("foo", "bar", ";")` returns the string `foo;bar`.
+     *
+     * @param s1  string
+     * @param s2  string
+     * @param sep separator
+     * @return the string obtained by joining two strings `s1` and `s2` with the separator `sep`
+     */
+    public static String join2(String s1, String s2, String sep) {
+        return s1 + sep + s2;
     }
 
-    public static String escape(String valueParameter, String modeParameter) {
-        String mode = modeParameter.toLowerCase();
-        if (mode.equals("html")) {
-            return StringEscapeUtils.escapeHtml(valueParameter);
-        } else if (mode.equals("xml")) {
-            return StringEscapeUtils.escapeXml(valueParameter);
-        } else if (mode.equals("csv")) {
-            return StringEscapeUtils.escapeCsv(valueParameter);
-        } else if (mode.equals("url")) {
-            return encodeURIComponent(valueParameter);
-        } else if (mode.equals("javascript")) {
-            return StringEscapeUtils.escapeJavaScript(valueParameter);
-        }
-        return valueParameter;
-    }
-
-    private static final String ALLOWED_CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.!~*'()";
-
-    private static String encodeURIComponent(String input) {
-        if (StringUtils.isEmpty(input)) {
-            return input;
-        }
-
-        int l = input.length();
-        StringBuilder o = new StringBuilder(l * 3);
+    /**
+     * Returns `s` as a normalized xsd:date string, using `f` as current date form.
+     *
+     * @param s string
+     * @param f format
+     * @return a normalized xsd:date string
+     */
+    public static String normalizeDate(String s, String f) {
+        DateFormat format = new SimpleDateFormat(f);
+        Date date = null;
         try {
-            for (int i = 0; i < l; i++) {
-                String e = input.substring(i, i + 1);
-                if (!ALLOWED_CHARS.contains(e)) {
-                    byte[] b = e.getBytes("utf-8");
-                    o.append(getHex(b));
-                    continue;
-                }
-                o.append(e);
-            }
-            return o.toString();
-        } catch (UnsupportedEncodingException e) {
+            date = format.parse(s);
+        } catch (ParseException e) {
             e.printStackTrace();
+            return s;
         }
-        return input;
-    }
-
-    private static String getHex(byte buf[]) {
-        StringBuilder o = new StringBuilder(buf.length * 3);
-        for (int i = 0; i < buf.length; i++) {
-            int n = (int) buf[i] & 0xff;
-            o.append("%");
-            if (n < 0x10) {
-                o.append("0");
-            }
-            o.append(Long.toString(n, 16).toUpperCase());
-        }
-        return o.toString();
+        DateFormat xsdDateFormat = new SimpleDateFormat("yyyy-mm-dd");
+        return xsdDateFormat.format(date);
     }
 
     private static String decodeURIComponent(String encodedURI) {
