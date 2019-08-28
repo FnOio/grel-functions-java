@@ -10,8 +10,8 @@ import org.apache.commons.codec.language.Soundex;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 
+import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -20,18 +20,17 @@ import java.util.regex.Pattern;
 /**
  * GREL Functions
  * Find info at https://github.com/OpenRefine/OpenRefine/wiki/GREL-Functions
- *
  * @author bjdmeest
  */
 public class GrelFunctions {
 
     // BOOLEAN
     public static boolean and(boolean b1, boolean b2, boolean... booleans) {
-        if (!(b1 || b2)) {
+        if (! (b1 || b2)) {
             return false;
         }
         for (boolean aBoolean : booleans) {
-            if (!aBoolean) {
+            if (! aBoolean) {
                 return false;
             }
         }
@@ -236,7 +235,7 @@ public class GrelFunctions {
             return new String[]{s, "", ""};
         }
         output.add(s.substring(0, index));
-        if (!omitFragment) {
+        if (! omitFragment) {
             output.add(frag);
             offset += frag.length();
         }
@@ -264,7 +263,6 @@ public class GrelFunctions {
 
     /**
      * For strings, returns the portion where they differ. For dates, it returns the difference in given time units.
-     *
      * @param o1
      * @param o2
      * @return
@@ -372,10 +370,12 @@ public class GrelFunctions {
     // mqlKeyQuote
     // mqlKeyUnquote
 
+    
 
     public static boolean isSet(String valueParameter) {
         return !StringUtils.isEmpty(valueParameter);
     }
+
 
 
     public static boolean booleanMatch(String valueParameter, String regexParameter) {
@@ -391,20 +391,24 @@ public class GrelFunctions {
 
         int l = input.length();
         StringBuilder o = new StringBuilder(l * 3);
-        for (int i = 0; i < l; i++) {
-            String e = input.substring(i, i + 1);
-            if (!ALLOWED_CHARS.contains(e)) {
-                byte[] b = e.getBytes(StandardCharsets.UTF_8);
-                o.append(getHex(b));
-                continue;
+        try {
+            for (int i = 0; i < l; i++) {
+                String e = input.substring(i, i + 1);
+                if (!ALLOWED_CHARS.contains(e)) {
+                    byte[] b = e.getBytes("utf-8");
+                    o.append(getHex(b));
+                    continue;
+                }
+                o.append(e);
             }
-            o.append(e);
+            return o.toString();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
         }
-        return o.toString();
         return input;
     }
 
-    private static String getHex(byte[] buf) {
+    private static String getHex(byte buf[]) {
         StringBuilder o = new StringBuilder(buf.length * 3);
         for (int i = 0; i < buf.length; i++) {
             int n = (int) buf[i] & 0xff;
