@@ -7,13 +7,13 @@ import org.apache.commons.codec.language.ColognePhonetic;
 import org.apache.commons.codec.language.DoubleMetaphone;
 import org.apache.commons.codec.language.Metaphone;
 import org.apache.commons.codec.language.Soundex;
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -370,7 +370,45 @@ public class GrelFunctions {
     // mqlKeyQuote
     // mqlKeyUnquote
 
-    
+    // ARRAY
+    public static int length(Object[] a) {
+        return a.length;
+    }
+
+    public static Object[] slice(Object[] a, int from, int to) {
+        return Arrays.copyOfRange(a, from, to + 1);
+    }
+
+    public static Object[] slice(Object[] a, int from) {
+        return slice(a, from, a.length);
+    }
+
+    // see get of strings
+
+    public static Object[] reverse(Object[] a) {
+        ArrayUtils.reverse(a);
+        return a;
+    }
+
+    public static Object[] sort(Object[] a) {
+        Arrays.sort(a);
+        return a;
+    }
+
+    public static int sum(Integer[] a) {
+        return Arrays.stream(a).mapToInt(Integer::intValue).sum();
+    }
+
+    public static String join(Object[] a, String sep) {
+        return StringUtils.join(a, sep);
+    }
+
+    public static Object[] uniques(Object[] a) {
+        SortedSet<Object> set = new TreeSet<>(Arrays.asList(a));
+        return set.toArray(new Object[0]);
+
+    }
+
 
     public static boolean isSet(String valueParameter) {
         return !StringUtils.isEmpty(valueParameter);

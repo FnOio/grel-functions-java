@@ -63,4 +63,12 @@ class GrelFunctionsTest {
                 GrelFunctions.partition("lollipop", "a")
         );
     }
+
+    @Test
+    void unique() {
+        assertArrayEquals(
+                new String[]{"1", "2", "3"},
+                GrelFunctions.uniques(new String[]{"1", "2", "2", "3"})
+        );
+    }
 }
