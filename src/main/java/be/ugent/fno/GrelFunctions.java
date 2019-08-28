@@ -13,6 +13,11 @@ import org.apache.commons.lang.StringUtils;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.temporal.TemporalField;
+import java.time.temporal.TemporalUnit;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -409,12 +414,85 @@ public class GrelFunctions {
 
     }
 
+    // MATH
+    public static double floor(int d) {
+        return Math.floor(d);
+    }
+
+    public static double ceil(int d) {
+        return Math.ceil(d);
+    }
+
+    public static double round(int d) {
+        return Math.round(d);
+    }
+
+    public static double min(int d1, int d2) {
+        return Math.min(d1, d2);
+    }
+
+    public static double max(int d1, int d2) {
+        return Math.max(d1, d2);
+    }
+
+    public static int mod(int d1, int d2) {
+        return Math.floorMod(d1, d2);
+    }
+
+    public static double ln(int d) {
+        return Math.log(d);
+    }
+
+    public static double log(int d) {
+        return Math.log10(d);
+    }
+
+    public static double exp(int d) {
+        return Math.exp(d);
+    }
+
+    public static double pow(int d, int e) {
+        return Math.pow(d, e);
+    }
+
+    // sum already implemented
+
+    // DATE
+    public static LocalDateTime now() {
+        return LocalDateTime.now();
+    }
+
+    // TODO
+    public static String toDate(String o, String pattern) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        return simpleDateFormat.format(o);
+    }
+
+    public static String toString(String date, String pattern) {
+        return toDate(date, pattern);
+    }
+
+    // TODO
+    public static String diff(LocalDateTime d1, LocalDateTime d2, String timeUnit) {
+        Duration duration = Duration.between(d1, d2);
+        return duration.toString();
+    }
+
+    public static String inc(LocalDateTime f, long value, TemporalUnit unit) {
+        return f.plus(value, unit).toString();
+    }
+
+    public static long datePart(LocalDateTime d, TemporalField unit) {
+        return d.get(unit);
+    }
+
+
 
     public static boolean isSet(String valueParameter) {
         return !StringUtils.isEmpty(valueParameter);
     }
 
-
+    // OTHER
 
     public static boolean booleanMatch(String valueParameter, String regexParameter) {
         return valueParameter.matches(regexParameter);
