@@ -1,5 +1,8 @@
 package be.ugent.fno;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import org.apache.commons.codec.Encoder;
 import org.apache.commons.codec.EncoderException;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -12,6 +15,7 @@ import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Field;
 import java.nio.charset.Charset;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -486,13 +490,42 @@ public class GrelFunctions {
         return d.get(unit);
     }
 
+    // OTHER
+    public static Class<?> type(Object o) {
+        return o.getClass();
+    }
 
+    public static boolean hasField(Object o, String name) {
+        Class<?> someClass = o.getClass();
+        try {
+            Field someField = someClass.getField(name);
+        } catch (NoSuchFieldException e) {
+            return false;
+        }
+        return true;
+    }
+
+    public static Object coalesce(Object... objects) {
+        for (int i = 0; i < objects.length; i++) {
+            if (!(objects[0] == null)) {
+                return objects[0];
+            }
+        }
+        return null;
+    }
+
+    public static String jsonize(Object s) throws JsonProcessingException {
+        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+        return ow.writeValueAsString(s);
+    }
+
+    // TODO
+    // Application speficic functions
+    // JSON/HTML selectors...
 
     public static boolean isSet(String valueParameter) {
         return !StringUtils.isEmpty(valueParameter);
     }
-
-    // OTHER
 
     public static boolean booleanMatch(String valueParameter, String regexParameter) {
         return valueParameter.matches(regexParameter);
