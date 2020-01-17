@@ -57,13 +57,13 @@ public class BooleanFunctions {
      * @return boolean
      */
     public static boolean xor(List<Boolean> b) {
-        boolean result = false;
+        int numberOfTrues = 0;
         for (Boolean b1 : b) {
-            if (!result && b1) {
-                result = true;
+            if (b1) {
+                numberOfTrues++;
             }
         }
-        return result;
+        return numberOfTrues == 1;
     }
 
 }

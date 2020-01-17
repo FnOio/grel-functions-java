@@ -9,6 +9,8 @@ public class ControlsFunctions_Test {
         String one = "one";
         String two = "two";
         String out = (String) ControlsFunctions.ifThenElse(true, one, two);
-        assertEquals(out, one);
+        assertEquals(one, out);
+        out = (String) ControlsFunctions.ifThenElse(false, one, two);
+        assertEquals(two, out);
     }
 }

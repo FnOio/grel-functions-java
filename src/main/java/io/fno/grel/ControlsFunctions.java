@@ -13,6 +13,6 @@ public class ControlsFunctions {
         if (b) {
             return eTrue;
         }
-        return false;
+        return eFalse;
     }
 }
