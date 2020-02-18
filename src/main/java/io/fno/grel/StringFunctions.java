@@ -45,7 +45,14 @@ public class StringFunctions {
         return s.endsWith(sub);
     }
 
-    // TODO https://github.com/OpenRefine/OpenRefine/wiki/GREL-String-Functions#containsstring-s-string-sub
+    /**
+     * Returns boolean indicating whether s ends with sub.
+     * For example, endsWith("food", "ood") returns true, whereas endsWith("food", "odd") returns false.
+     * You could also write the first case as "food".endsWith("ood").
+     * @param s
+     * @param sub
+     * @return
+     */
     public static boolean contains(String s, String sub) {
         return s.contains(sub);
     }

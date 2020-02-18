@@ -6,7 +6,7 @@
 
     <groupId>io.fno</groupId>
     <artifactId>grel</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.0</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>8</maven.compiler.source>
@@ -47,7 +47,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>GrelFunctionsCustom</mainClass>
+                            <mainClass>io.fno.grel.ArrayFunctions</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

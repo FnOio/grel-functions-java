@@ -7,7 +7,7 @@ public class ControlsFunctions {
      * @param b
      * @param eTrue
      * @param eFalse
-     * @return
+     * @return Object
      */
     public static Object ifThenElse(Boolean b, Object eTrue, Object eFalse) {
         if (b) {
