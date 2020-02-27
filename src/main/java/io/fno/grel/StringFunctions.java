@@ -1,5 +1,6 @@
 package io.fno.grel;
 
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 
@@ -15,7 +16,7 @@ public class StringFunctions {
      * @param s string
      * @return length
      */
-    public static int length(String s) {
+    public static Integer length(String s) {
         return s.length();
     }
 
@@ -29,7 +30,7 @@ public class StringFunctions {
      * @param sub prefix
      * @return boolean
      */
-    public static boolean startsWith(String s, String sub) {
+    public static Boolean startsWith(String s, String sub) {
         return s.startsWith(sub);
     }
 
@@ -41,7 +42,7 @@ public class StringFunctions {
      * @param sub suffix
      * @return boolean
      */
-    public static boolean endsWith(String s, String sub) {
+    public static Boolean endsWith(String s, String sub) {
         return s.endsWith(sub);
     }
 
@@ -53,7 +54,7 @@ public class StringFunctions {
      * @param sub
      * @return
      */
-    public static boolean contains(String s, String sub) {
+    public static Boolean contains(String s, String sub) {
         return s.contains(sub);
     }
 
@@ -235,7 +236,7 @@ public class StringFunctions {
             for (int i = 0; i < l; i++) {
                 String e = input.substring(i, i + 1);
                 if (!ALLOWED_CHARS.contains(e)) {
-                    byte[] b = e.getBytes("utf-8");
+                    Byte[] b = ArrayUtils.toObject(e.getBytes("utf-8"));
                     o.append(getHex(b));
                     continue;
                 }
@@ -248,7 +249,7 @@ public class StringFunctions {
         return input;
     }
 
-    private static String getHex(byte buf[]) {
+    private static String getHex(Byte[] buf) {
         StringBuilder o = new StringBuilder(buf.length * 3);
         for (byte b : buf) {
             int n = (int) b & 0xff;

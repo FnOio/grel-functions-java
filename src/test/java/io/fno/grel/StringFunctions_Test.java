@@ -11,28 +11,28 @@ public class StringFunctions_Test {
     @Test
     public void length() {
         String input = "one";
-        int output = StringFunctions.length(input);
-        assertEquals(3, output);
+        Integer output = StringFunctions.length(input);
+        assertEquals(new Integer(3), output);
     }
 
     @Test
     public void startsWith() {
         String input = "one";
-        boolean output = StringFunctions.startsWith(input, "on");
+        Boolean output = StringFunctions.startsWith(input, "on");
         assertTrue(output);
     }
 
     @Test
     public void endsWith() {
         String input = "one";
-        boolean output = StringFunctions.endsWith(input, "ne");
+        Boolean output = StringFunctions.endsWith(input, "ne");
         assertTrue(output);
     }
 
     @Test
     public void contains() {
         String input = "ones";
-        boolean output = StringFunctions.contains(input, "ne");
+        Boolean output = StringFunctions.contains(input, "ne");
         assertTrue(output);
     }
 

@@ -11,7 +11,7 @@ public class BooleanFunctions {
      * @param b two or more booleans
      * @return boolean
      */
-    public static boolean and(List<Boolean> b) {
+    public static Boolean and(List<Boolean> b) {
         boolean result = true;
         for (Boolean b1 : b) {
             if (!b1) {
@@ -28,7 +28,7 @@ public class BooleanFunctions {
      * @param b two or more booleans
      * @return boolean
      */
-    public static boolean or(List<Boolean> b) {
+    public static Boolean or(List<Boolean> b) {
         boolean result = false;
         for (Boolean b1 : b) {
             if (b1) {
@@ -45,7 +45,7 @@ public class BooleanFunctions {
      * @param b a boolean
      * @return the reverted boolean
      */
-    public static boolean not(boolean b) {
+    public static Boolean not(Boolean b) {
         return !b;
     }
 
@@ -54,9 +54,9 @@ public class BooleanFunctions {
      * For example, `xor(1 < 3, 1 > 7)` returns `true` because only one of the conditions (the first one) is true. `xor(1 < 3, 1 < 7)` returns `false` because more than one of the conditions is true.
      *
      * @param b two or more booleans
-     * @return boolean
+     * @return Boolean
      */
-    public static boolean xor(List<Boolean> b) {
+    public static Boolean xor(List<Boolean> b) {
         int numberOfTrues = 0;
         for (Boolean b1 : b) {
             if (b1) {

@@ -14,7 +14,7 @@ public class BooleanFunctions_Test {
         input.add(true);
         input.add(false);
 
-        boolean output = BooleanFunctions.and(input);
+        Boolean output = BooleanFunctions.and(input);
         assertFalse(output);
     }
 
@@ -24,13 +24,13 @@ public class BooleanFunctions_Test {
         input.add(true);
         input.add(false);
 
-        boolean output = BooleanFunctions.or(input);
+        Boolean output = BooleanFunctions.or(input);
         assertTrue(output);
     }
 
     @Test
     public void not() {
-        boolean output = BooleanFunctions.not(false);
+        Boolean output = BooleanFunctions.not(false);
         assertTrue(output);
     }
 
@@ -40,7 +40,7 @@ public class BooleanFunctions_Test {
         input.add(true);
         input.add(true);
 
-        boolean output = BooleanFunctions.xor(input);
+        Boolean output = BooleanFunctions.xor(input);
         assertFalse(output);
     }
 }
