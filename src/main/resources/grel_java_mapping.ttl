@@ -55,6 +55,20 @@ grelm:javaArray
 
 #CONCAT
 
+grelm:getMapping
+    a                    fnoi:Mapping ;
+    fno:function         grel:array_get ;
+    fno:implementation   grelm:javaArray ;
+# TODO if not clear
+    fno:parameterMapping [ ] ;
+# TODO if not clear
+    fno:returnMapping    [ ] ;
+    fno:methodMapping    [ a                fnom:StringMethodMapping ;
+                           fnom:method-name "get" ] ;
+.
+
+#CONCAT
+
 grelm:joinMapping
     a                    fnoi:Mapping ;
     fno:function         grel:array_join ;
@@ -248,6 +262,20 @@ grelm:trimMapping
     fno:returnMapping    [ ] ;
     fno:methodMapping    [ a                fnom:StringMethodMapping ;
                            fnom:method-name "trim" ] ;
+.
+
+#CHOMP
+
+grelm:trimMapping
+    a                    fnoi:Mapping ;
+    fno:function         grel:string_chomp ;
+    fno:implementation   grelm:javaString ;
+# TODO if not clear
+    fno:parameterMapping [ ] ;
+# TODO if not clear
+    fno:returnMapping    [ ] ;
+    fno:methodMapping    [ a                fnom:StringMethodMapping ;
+                           fnom:method-name "chomp" ] ;
 .
 
 #SUBSTRING

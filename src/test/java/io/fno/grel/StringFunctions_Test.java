@@ -57,6 +57,13 @@ public class StringFunctions_Test {
         assertEquals("Ones", output);
     }
 
+
+    @Test
+    public void chomp() {
+        assertEquals("hard", StringFunctions.chomp("hardly", "ly"));
+        assertEquals("hard", StringFunctions.chomp("hard", "ly"));
+    }
+
     @Test
     public void substring() {
         String input = "Ones";

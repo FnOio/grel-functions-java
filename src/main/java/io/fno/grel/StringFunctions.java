@@ -95,7 +95,18 @@ public class StringFunctions {
 
     // TODO strip sameas trim
 
-    // TODO https://github.com/OpenRefine/OpenRefine/wiki/GREL-String-Functions#chompstring-s-string-sep
+    /**
+     * Returns a copy of s with sep removed from the end if s ends with sep; otherwise, just returns s.
+     * For example, chomp("hardly", "ly") and chomp("hard", "ly") both return the string hard.
+     * https://github.com/OpenRefine/OpenRefine/wiki/GREL-String-Functions#chompstring-s-string-sep
+     *
+     * @param s   string
+     * @param sep sep
+     * @return a copy of s with sep removed from the end if s ends with sep; otherwise, just returns s
+     */
+    public static String chomp(String s, String sep) {
+        return StringUtils.chomp(s, sep);
+    }
 
     // TODO fn-xpath:func-substring .
 
@@ -109,7 +120,7 @@ public class StringFunctions {
      * @param from character index from
      * @return substring
      */
-    public static String substring(String s, int from) {
+    public static String substring(String s, Integer from) {
         return s.substring(from);
     }
 
@@ -126,7 +137,7 @@ public class StringFunctions {
      * @param to   character index upto
      * @return substring
      */
-    public static String substring(String s, int from, int to) {
+    public static String substring(String s, Integer from, Integer to) {
         return s.substring(from, to);
     }
 
