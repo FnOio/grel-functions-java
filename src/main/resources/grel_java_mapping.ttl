@@ -266,7 +266,7 @@ grelm:trimMapping
 
 #CHOMP
 
-grelm:trimMapping
+grelm:chompMapping
     a                    fnoi:Mapping ;
     fno:function         grel:string_chomp ;
     fno:implementation   grelm:javaString ;
