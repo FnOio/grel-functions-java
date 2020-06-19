@@ -49,7 +49,7 @@ grelm:dataset
 #   - Functions (per java)
 
 grelm:javaArray
-    a                  fno:JavaClass ;
+    a                  fnoi:JavaClass ;
     doap:download-page "GrelFunctions.jar" ;
     fnoi:class-name    "io.fno.grel.ArrayFunctions" .
 
@@ -82,7 +82,7 @@ grelm:joinMapping
 .
 
 grelm:javaBoolean
-    a                  fno:JavaClass ;
+    a                  fnoi:JavaClass ;
     doap:download-page "GrelFunctions.jar" ;
     fnoi:class-name    "io.fno.grel.BooleanFunctions" .
 
