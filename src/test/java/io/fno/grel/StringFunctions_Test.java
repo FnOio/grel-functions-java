@@ -4,8 +4,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class StringFunctions_Test {
     @Test
@@ -51,6 +50,13 @@ public class StringFunctions_Test {
     }
 
     @Test
+    public void toTitlecase() {
+        String input = "Once upon a midnight DREARY";
+        String output = StringFunctions.toTitlecase(input);
+        assertEquals("Once Upon A Midnight Dreary", output);
+    }
+
+    @Test
     public void trim() {
         String input = " Ones   ";
         String output = StringFunctions.trim(input);
@@ -69,6 +75,13 @@ public class StringFunctions_Test {
         String input = "Ones";
         String output = StringFunctions.substring(input, 1);
         assertEquals("nes", output);
+    }
+
+    @Test
+    public void lastIndexOf() {
+        String input = "Ononones";
+        Integer output = StringFunctions.lastIndexOf(input, "on");
+        assertSame(4, output);
     }
 
     @Test
@@ -93,5 +106,19 @@ public class StringFunctions_Test {
         input = "On es";
         output = StringFunctions.escape(input, "url");
         assertEquals("On%20es", output);
+    }
+
+    @Test
+    public void md5() {
+        String input = "One";
+        String output = StringFunctions.md5(input);
+        assertEquals("06c2cea18679d64399783748fa367bdd", output);
+    }
+
+    @Test
+    public void sha1() {
+        String input = "One";
+        String output = StringFunctions.sha1(input);
+        assertEquals("b58b5a8ced9db48b30e008b148004c1065ce53b1", output);
     }
 }

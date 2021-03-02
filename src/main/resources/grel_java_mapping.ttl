@@ -10,6 +10,7 @@
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix void:    <http://rdfs.org/ns/void#> .
+@prefix woc:     <http://rdf.webofcode.org/woc/> .
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 
 grelm:void
@@ -53,9 +54,26 @@ grelm:javaArray
     doap:download-page "GrelFunctions.jar" ;
     fnoi:class-name    "io.fno.grel.ArrayFunctions" .
 
-#CONCAT
+#GET
 
 grelm:getMapping
+    a                    fnoi:Mapping ;
+    fno:function         grel:array_get ;
+    fno:implementation   grelm:javaArray ;
+# TODO if not clear
+    fno:parameterMapping [ fnom:functionParameter                 grel:param_a ;
+                           <http://rdf.webofcode.org/woc/hasType> <http://rdf.webofcode.org/woc/Wildcard> ] ;
+    fno:parameterMapping [ fnom:functionParameter                 grel:p_int_i_from ;
+                           <http://rdf.webofcode.org/woc/hasType> <http://rdf.webofcode.org/woc/Wildcard> ] ;
+# TODO if not clear
+#    fno:returnMapping    [ ] ;
+    fno:methodMapping    [ a                fnom:StringMethodMapping ;
+                           fnom:method-name "get" ] ;
+.
+
+#SLICE
+
+grelm:sliceMapping
     a                    fnoi:Mapping ;
     fno:function         grel:array_get ;
     fno:implementation   grelm:javaArray ;
@@ -67,7 +85,7 @@ grelm:getMapping
                            fnom:method-name "get" ] ;
 .
 
-#CONCAT
+#JOIN
 
 grelm:joinMapping
     a                    fnoi:Mapping ;
@@ -250,6 +268,20 @@ grelm:uppercaseMapping
                            fnom:method-name "toUppercase" ] ;
 .
 
+#TOTITLECASE
+
+grelm:titlecaseMapping
+    a                    fnoi:Mapping ;
+    fno:function         grel:string_toTitlecase ;
+    fno:implementation   grelm:javaString ;
+# TODO if not clear
+    fno:parameterMapping [ ] ;
+# TODO if not clear
+    fno:returnMapping    [ ] ;
+    fno:methodMapping    [ a                fnom:StringMethodMapping ;
+                           fnom:method-name "toTitlecase" ] ;
+.
+
 #TRIM
 
 grelm:trimMapping
@@ -292,6 +324,20 @@ grelm:substringMapping
                            fnom:method-name "substring" ] ;
 .
 
+#SUBSTRING
+
+grelm:lastIndexOfMapping
+    a                    fnoi:Mapping ;
+    fno:function         grel:string_lastIndexOf ;
+    fno:implementation   grelm:javaString ;
+# TODO if not clear
+    fno:parameterMapping [ ] ;
+# TODO if not clear
+    fno:returnMapping    [ ] ;
+    fno:methodMapping    [ a                fnom:StringMethodMapping ;
+                           fnom:method-name "lastIndexOf" ] ;
+.
+
 #SPLIT
 
 grelm:splitMapping
@@ -320,3 +366,30 @@ grelm:escapeMapping
                            fnom:method-name "escape" ] ;
 .
 
+#MD5
+
+grelm:escapeMapping
+    a                    fnoi:Mapping ;
+    fno:function         grel:string_md5 ;
+    fno:implementation   grelm:javaString ;
+# TODO if not clear
+    fno:parameterMapping [ ] ;
+# TODO if not clear
+    fno:returnMapping    [ ] ;
+    fno:methodMapping    [ a                fnom:StringMethodMapping ;
+                           fnom:method-name "md5" ] ;
+.
+
+#SHA1
+
+grelm:escapeMapping
+    a                    fnoi:Mapping ;
+    fno:function         grel:string_sha1 ;
+    fno:implementation   grelm:javaString ;
+# TODO if not clear
+    fno:parameterMapping [ ] ;
+# TODO if not clear
+    fno:returnMapping    [ ] ;
+    fno:methodMapping    [ a                fnom:StringMethodMapping ;
+                           fnom:method-name "sha1" ] ;
+.

@@ -1,8 +1,10 @@
 package io.fno.grel;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.WordUtils;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
@@ -50,6 +52,7 @@ public class StringFunctions {
      * Returns boolean indicating whether s ends with sub.
      * For example, endsWith("food", "ood") returns true, whereas endsWith("food", "odd") returns false.
      * You could also write the first case as "food".endsWith("ood").
+     *
      * @param s
      * @param sub
      * @return
@@ -81,6 +84,17 @@ public class StringFunctions {
     }
 
     // TODO https://github.com/OpenRefine/OpenRefine/wiki/GREL-String-Functions#totitlecasestring-s
+
+    /**
+     * https://docs.openrefine.org/manual/grelfunctions/#totitlecases
+     * Returns string s converted into titlecase: a capital letter starting each word, and the rest of the letters lowercase.
+     *
+     * @param s
+     * @return capitalized string
+     */
+    public static String toTitlecase(String s) {
+        return WordUtils.capitalizeFully(s);
+    }
 
     /**
      * Returns a copy of the string, with leading and trailing whitespace removed.
@@ -147,7 +161,17 @@ public class StringFunctions {
 
     // TODO https://github.com/OpenRefine/OpenRefine/wiki/GREL-String-Functions#indexofstring-s-string-sub-1
 
-    // TODO https://github.com/OpenRefine/OpenRefine/wiki/GREL-String-Functions#lastindexofstring-s-string-sub
+    /**
+     * https://docs.openrefine.org/manual/grelfunctions/#lastindexofs-sub
+     * Returns the first character index of sub as it last occurs in s; or, returns -1 if s does not contain sub.
+     *
+     * @param s
+     * @param sub
+     * @return character index
+     */
+    public static Integer lastIndexOf(String s, String sub) {
+        return s.lastIndexOf(sub);
+    }
 
     // TODO https://github.com/OpenRefine/OpenRefine/wiki/GREL-String-Functions#replacestring-s-string-f-string-r
 
@@ -212,9 +236,25 @@ public class StringFunctions {
 
     // TODO https://github.com/OpenRefine/OpenRefine/wiki/GREL-String-Functions#unescapestring-s-string-mode
 
-    // TODO https://github.com/OpenRefine/OpenRefine/wiki/GREL-String-Functions#md5string-s
+    /**
+     * Returns the MD5 hash of an object. If fed something other than a string (array, number, date, etc.), md5() will convert it to a string and deliver the hash of the string.
+     *
+     * @param s
+     * @return
+     */
+    public static String md5(String s) {
+        return DigestUtils.md5Hex(s);
+    }
 
-    // TODO https://github.com/OpenRefine/OpenRefine/wiki/GREL-String-Functions#sha1string-s
+    /**
+     * Returns the SHA-1 hash of an object. If fed something other than a string (array, number, date, etc.), sha1() will convert it to a string and deliver the hash of the string.
+     *
+     * @param s
+     * @return
+     */
+    public static String sha1(String s) {
+        return DigestUtils.sha1Hex(s);
+    }
 
     // TODO https://github.com/OpenRefine/OpenRefine/wiki/GREL-String-Functions#phoneticstring-s-string-encoding
 
