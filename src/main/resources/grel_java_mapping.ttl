@@ -368,7 +368,7 @@ grelm:escapeMapping
 
 #MD5
 
-grelm:escapeMapping
+grelm:md5Mapping
     a                    fnoi:Mapping ;
     fno:function         grel:string_md5 ;
     fno:implementation   grelm:javaString ;
@@ -382,7 +382,7 @@ grelm:escapeMapping
 
 #SHA1
 
-grelm:escapeMapping
+grelm:sha1Mapping
     a                    fnoi:Mapping ;
     fno:function         grel:string_sha1 ;
     fno:implementation   grelm:javaString ;
