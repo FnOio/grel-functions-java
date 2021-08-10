@@ -99,6 +99,38 @@ public class StringFunctions_Test {
     }
 
     @Test
+    public void splitByLengths() {
+        assertArrayEquals(
+                new String[]{"inter", "nation", "ali"},
+                StringFunctions.splitByLengths("internationalization", 5, 6, 3)
+        );
+    }
+
+    @Test
+    public void partition() {
+        assertArrayEquals(
+                new String[]{"inter", "nation", "alization"},
+                StringFunctions.partition("internationalization", "nation")
+        );
+    }
+
+    @Test
+    public void rpartition() {
+        assertArrayEquals(
+                new String[]{"par", "a", "llel"},
+                StringFunctions.partition("parallel", "a")
+        );
+    }
+
+    @Test
+    public void rpartition_empty() {
+        assertArrayEquals(
+                new String[]{"lollipop", "", ""},
+                StringFunctions.partition("lollipop", "a")
+        );
+    }
+
+    @Test
     public void escape() {
         String input = "On&es";
         String output = StringFunctions.escape(input, "html");

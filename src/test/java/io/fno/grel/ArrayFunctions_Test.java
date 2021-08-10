@@ -36,4 +36,12 @@ public class ArrayFunctions_Test {
         String output = ArrayFunctions.join(input, " ");
         assertEquals("one two", output);
     }
+
+    @Test
+    public void unique() {
+        assertArrayEquals(
+                new String[]{"1", "2", "3"},
+                ArrayFunctions.uniques(new String[]{"1", "2", "2", "3"})
+        );
+    }
 }
