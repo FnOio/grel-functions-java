@@ -34,4 +34,4 @@ So `Integer` instead of `int`, etc.
 > The Function Handler for the moment only handles Classes, not primitives.
 
 [FnO]: https://fno.io/spec/
-[GREL]: https://github.com/OpenRefine/OpenRefine/wiki/GREL-Functions
+[GREL]: https://docs.openrefine.org/manual/grelfunctions
