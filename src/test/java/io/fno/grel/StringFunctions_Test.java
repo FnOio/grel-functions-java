@@ -11,7 +11,7 @@ public class StringFunctions_Test {
     public void length() {
         String input = "one";
         Integer output = StringFunctions.length(input);
-        assertEquals(new Integer(3), output);
+        assertEquals(Integer.valueOf(3), output);
     }
 
     @Test
@@ -94,8 +94,40 @@ public class StringFunctions_Test {
     @Test
     public void split() {
         String input = "Ones";
-        List output = StringFunctions.split(input, "ne");
+        List<String> output = StringFunctions.split(input, "ne");
         assertEquals(2, output.size());
+    }
+
+    @Test
+    public void splitByLengths() {
+        assertArrayEquals(
+                new String[]{"inter", "nation", "ali"},
+                StringFunctions.splitByLengths("internationalization", 5, 6, 3)
+        );
+    }
+
+    @Test
+    public void partition() {
+        assertArrayEquals(
+                new String[]{"inter", "nation", "alization"},
+                StringFunctions.partition("internationalization", "nation")
+        );
+    }
+
+    @Test
+    public void rpartition() {
+        assertArrayEquals(
+                new String[]{"par", "a", "llel"},
+                StringFunctions.partition("parallel", "a")
+        );
+    }
+
+    @Test
+    public void rpartition_empty() {
+        assertArrayEquals(
+                new String[]{"lollipop", "", ""},
+                StringFunctions.partition("lollipop", "a")
+        );
     }
 
     @Test

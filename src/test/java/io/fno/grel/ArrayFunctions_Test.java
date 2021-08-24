@@ -13,15 +13,15 @@ public class ArrayFunctions_Test {
 
     @Test
     public void get() {
-        Map testMap = new HashMap<String, Object>();
+        Map<String, Object> testMap = new HashMap<>();
         testMap.put("test", "testValue");
-        List testList = new ArrayList<String>();
+        List<String> testList = new ArrayList<>();
         testList.add("testValue1");
         testList.add("testValue2");
         testList.add("testValue3");
         assertEquals("testValue", ArrayFunctions.get(testMap, "test"));
         assertEquals("testValue2", ArrayFunctions.get(testList, 1));
-        List expectedList = new ArrayList<String>();
+        List<String> expectedList = new ArrayList<>();
         expectedList.add("testValue2");
         expectedList.add("testValue3");
         assertEquals(expectedList, ArrayFunctions.get(testList, 1, 3));
@@ -35,5 +35,13 @@ public class ArrayFunctions_Test {
 
         String output = ArrayFunctions.join(input, " ");
         assertEquals("one two", output);
+    }
+
+    @Test
+    public void unique() {
+        assertArrayEquals(
+                new String[]{"1", "2", "3"},
+                ArrayFunctions.uniques(new String[]{"1", "2", "2", "3"})
+        );
     }
 }
