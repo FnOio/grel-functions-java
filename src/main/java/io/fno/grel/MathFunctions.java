@@ -5,43 +5,43 @@ package io.fno.grel;
  *       has not been tested
  */
 public class MathFunctions {
-    public static double floor(int d) {
+    public static Double floor(Double d) {
         return Math.floor(d);
     }
 
-    public static double ceil(int d) {
+    public static Double ceil(Double d) {
         return Math.ceil(d);
     }
 
-    public static double round(int d) {
-        return Math.round(d);
+    public static Double round(Double d) {
+        return (double) Math.round(d);
     }
 
-    public static double min(int d1, int d2) {
+    public static Double min(Double d1, Double d2) {
         return Math.min(d1, d2);
     }
 
-    public static double max(int d1, int d2) {
+    public static Double max(Double d1, Double d2) {
         return Math.max(d1, d2);
     }
 
-    public static int mod(int d1, int d2) {
+    public static Integer mod(Integer d1, Integer d2) {
         return Math.floorMod(d1, d2);
     }
 
-    public static double ln(int d) {
+    public static Double ln(Double d) {
         return Math.log(d);
     }
 
-    public static double log(int d) {
+    public static Double log(Double d) {
         return Math.log10(d);
     }
 
-    public static double exp(int d) {
+    public static Double exp(Double d) {
         return Math.exp(d);
     }
 
-    public static double pow(int d, int e) {
+    public static Double pow(Double d, Double e) {
         return Math.pow(d, e);
     }
 }

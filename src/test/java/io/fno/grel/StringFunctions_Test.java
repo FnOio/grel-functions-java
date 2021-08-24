@@ -11,7 +11,7 @@ public class StringFunctions_Test {
     public void length() {
         String input = "one";
         Integer output = StringFunctions.length(input);
-        assertEquals(new Integer(3), output);
+        assertEquals(Integer.valueOf(3), output);
     }
 
     @Test
@@ -94,7 +94,7 @@ public class StringFunctions_Test {
     @Test
     public void split() {
         String input = "Ones";
-        List output = StringFunctions.split(input, "ne");
+        List<String> output = StringFunctions.split(input, "ne");
         assertEquals(2, output.size());
     }
 

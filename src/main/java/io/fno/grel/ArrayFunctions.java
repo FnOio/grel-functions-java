@@ -75,15 +75,15 @@ public class ArrayFunctions {
     // TO-DO these functions are untested and need docstrings
     // (brought over from commit 98360fe7f7c13dcbd51c14db12218b605bd86c16)
 
-    public static int length(Object[] a) {
+    public static Integer length(Object[] a) {
         return a.length;
     }
 
-    public static Object[] slice(Object[] a, int from, int to) {
+    public static Object[] slice(Object[] a, Integer from, Integer to) {
         return Arrays.copyOfRange(a, from, to + 1);
     }
 
-    public static Object[] slice(Object[] a, int from) {
+    public static Object[] slice(Object[] a, Integer from) {
         return slice(a, from, a.length);
     }
 
@@ -98,10 +98,9 @@ public class ArrayFunctions {
         return a;
     }
 
-    public static int sum(Integer[] a) {
+    public static Integer sum(Integer[] a) {
         return Arrays.stream(a).mapToInt(Integer::intValue).sum();
     }
-
 
     public static Object[] uniques(Object[] a) {
         SortedSet<Object> set = new TreeSet<>(Arrays.asList(a));

@@ -327,7 +327,7 @@ public class StringFunctions {
      * then into a number. If the value is already a number, it will return the number.
      * https://docs.openrefine.org/manual/grelfunctions#tonumbers
      */
-    public static int toNumber(Object o) {
+    public static Integer toNumber(Object o) {
         if (o.getClass().equals(Integer.class)) {
             return (Integer) o;
         }
@@ -402,7 +402,7 @@ public class StringFunctions {
         return StringUtils.splitByCharacterType(value);
     }
 
-    public static String[] _partition(String s, String frag, boolean omitFragment, boolean last) {
+    public static String[] _partition(String s, String frag, Boolean omitFragment, Boolean last) {
         List<String> output = new ArrayList<>();
         int offset = 0;
         int index;
@@ -450,7 +450,7 @@ public class StringFunctions {
      * If the omitFragment boolean is true, for example with "internationalization".partition("nation", true),
      * the fragment is not returned. The output is [ "inter", "alization" ].
      */
-    public static String[] partition(String s, String frag, boolean omitFragment) {
+    public static String[] partition(String s, String frag, Boolean omitFragment) {
         return _partition(s, frag, omitFragment, false);
     }
 
@@ -476,7 +476,7 @@ public class StringFunctions {
      * For example, "parallel".rpartition("a") returns 3 strings:
      * [ "par", "a", "llel" ]. Otherwise works identically to partition().
      */
-    public static String[] rpartition(String s, String frag, boolean omitFragment) {
+    public static String[] rpartition(String s, String frag, Boolean omitFragment) {
         return _partition(s, frag, omitFragment, true);
     }
 
