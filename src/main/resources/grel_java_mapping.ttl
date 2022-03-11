@@ -155,6 +155,20 @@ grelm:array_uniquesMapping
                            fnom:method-name "uniques" ] ;
 .
 
+#SUM
+
+grelm:array_sumMapping
+    a                    fnoi:Mapping ;
+    fno:function         grel:array_sum ;
+    fno:implementation   grelm:javaArray ;
+# TODO if not clear
+    fno:parameterMapping [ ] ;
+# TODO if not clear
+    fno:returnMapping    [ ] ;
+    fno:methodMapping    [ a                fnom:StringMethodMapping ;
+                           fnom:method-name "sum" ] ;
+.
+
 grelm:javaBoolean
     a                  fnoi:JavaClass ;
     doap:download-page "GrelFunctions.jar" ;
@@ -392,6 +406,20 @@ grelm:substringMapping
     fno:returnMapping    [ ] ;
     fno:methodMapping    [ a                fnom:StringMethodMapping ;
                            fnom:method-name "substring" ] ;
+.
+
+#LASTINDEXOF
+
+grelm:indexOfMapping
+    a                    fnoi:Mapping ;
+    fno:function         grel:string_indexOf ;
+    fno:implementation   grelm:javaString ;
+# TODO if not clear
+    fno:parameterMapping [ ] ;
+# TODO if not clear
+    fno:returnMapping    [ ] ;
+    fno:methodMapping    [ a                fnom:StringMethodMapping ;
+                           fnom:method-name "indexOf" ] ;
 .
 
 #LASTINDEXOF
@@ -911,4 +939,18 @@ grelm:other_hasFieldMapping
     fno:returnMapping    [ ] ;
     fno:methodMapping    [ a                fnom:StringMethodMapping ;
                            fnom:method-name "hasField" ] ;
+.
+
+#COALESCE
+
+grelm:other_coalesceMapping
+    a                    fnoi:Mapping ;
+    fno:function         grel:other_coalesce ;
+    fno:implementation   grelm:javaOther ;
+# TODO if not clear
+    fno:parameterMapping [ ] ;
+# TODO if not clear
+    fno:returnMapping    [ ] ;
+    fno:methodMapping    [ a                fnom:StringMethodMapping ;
+                           fnom:method-name "coalesce" ] ;
 .

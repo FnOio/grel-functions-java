@@ -12,13 +12,7 @@ public class BooleanFunctions {
      * @return boolean
      */
     public static Boolean and(List<Boolean> b) {
-        boolean result = true;
-        for (Boolean b1 : b) {
-            if (!b1) {
-                result = false;
-            }
-        }
-        return result;
+        return !b.contains(false);
     }
 
     /**
@@ -29,13 +23,7 @@ public class BooleanFunctions {
      * @return boolean
      */
     public static Boolean or(List<Boolean> b) {
-        boolean result = false;
-        for (Boolean b1 : b) {
-            if (b1) {
-                result = true;
-            }
-        }
-        return result;
+        return b.contains(true);
     }
 
     /**
