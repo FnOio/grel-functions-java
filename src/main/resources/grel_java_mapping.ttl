@@ -141,20 +141,6 @@ grelm:array_sortMapping
                            fnom:method-name "sort" ] ;
 .
 
-#UNIQUES
-
-grelm:array_uniquesMapping
-    a                    fnoi:Mapping ;
-    fno:function         grel:array_uniques ;
-    fno:implementation   grelm:javaArray ;
-# TODO if not clear
-    fno:parameterMapping [ ] ;
-# TODO if not clear
-    fno:returnMapping    [ ] ;
-    fno:methodMapping    [ a                fnom:StringMethodMapping ;
-                           fnom:method-name "uniques" ] ;
-.
-
 #SUM
 
 grelm:array_sumMapping
@@ -167,6 +153,20 @@ grelm:array_sumMapping
     fno:returnMapping    [ ] ;
     fno:methodMapping    [ a                fnom:StringMethodMapping ;
                            fnom:method-name "sum" ] ;
+.
+
+#UNIQUES
+
+grelm:array_uniquesMapping
+    a                    fnoi:Mapping ;
+    fno:function         grel:array_uniques ;
+    fno:implementation   grelm:javaArray ;
+# TODO if not clear
+    fno:parameterMapping [ ] ;
+# TODO if not clear
+    fno:returnMapping    [ ] ;
+    fno:methodMapping    [ a                fnom:StringMethodMapping ;
+                           fnom:method-name "uniques" ] ;
 .
 
 grelm:javaBoolean
@@ -324,6 +324,20 @@ grelm:containsMapping
                            fnom:method-name "contains" ] ;
 .
 
+#LASTINDEXOF
+
+grelm:indexOfMapping
+    a                    fnoi:Mapping ;
+    fno:function         grel:string_indexOf ;
+    fno:implementation   grelm:javaString ;
+# TODO if not clear
+    fno:parameterMapping [ ] ;
+# TODO if not clear
+    fno:returnMapping    [ ] ;
+    fno:methodMapping    [ a                fnom:StringMethodMapping ;
+                           fnom:method-name "indexOf" ] ;
+.
+
 #TOLOWERCASE
 
 grelm:lowercaseMapping
@@ -406,20 +420,6 @@ grelm:substringMapping
     fno:returnMapping    [ ] ;
     fno:methodMapping    [ a                fnom:StringMethodMapping ;
                            fnom:method-name "substring" ] ;
-.
-
-#LASTINDEXOF
-
-grelm:indexOfMapping
-    a                    fnoi:Mapping ;
-    fno:function         grel:string_indexOf ;
-    fno:implementation   grelm:javaString ;
-# TODO if not clear
-    fno:parameterMapping [ ] ;
-# TODO if not clear
-    fno:returnMapping    [ ] ;
-    fno:methodMapping    [ a                fnom:StringMethodMapping ;
-                           fnom:method-name "indexOf" ] ;
 .
 
 #LASTINDEXOF
