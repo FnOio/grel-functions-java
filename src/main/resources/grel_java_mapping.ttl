@@ -324,6 +324,7 @@ grelm:containsMapping
                            fnom:method-name "contains" ] ;
 .
 
+
 #INDEXOF
 
 grelm:indexOfMapping
