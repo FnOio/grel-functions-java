@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## [0.7.3] - 2022-03-29
+
+### Fixed
+- Implementation mappings in `grel_java_mapping.ttl` used class `fnoi:Mapping` instead of `fno:Mapping` (see [GitLab issue #2](https://gitlab.ilabt.imec.be/fno/lib/grel-functions-java/-/issues/2))
+
 ## [0.7.2] - 2022-03-24
 
 ### Fixed
@@ -74,6 +79,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - removed deprecated GREL functions
 
+[0.7.3]: https://github.com/FnOio/grel-functions-java/compare/v0.7.1..v0.7.3
 [0.7.2]: https://github.com/FnOio/grel-functions-java/compare/v0.7.1..v0.7.2
 [0.7.1]: https://github.com/FnOio/grel-functions-java/compare/v0.7.0..v0.7.1
 [0.7.0]: https://github.com/FnOio/grel-functions-java/compare/v0.6.1..v0.7.0
