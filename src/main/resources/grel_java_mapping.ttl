@@ -57,7 +57,7 @@ grelm:javaArray
 #GET
 
 grelm:getMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:array_get ;
     fno:implementation   grelm:javaArray ;
 # TODO if not clear
@@ -74,7 +74,7 @@ grelm:getMapping
 #JOIN
 
 grelm:array_joinMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:array_join ;
     fno:implementation   grelm:javaArray ;
 # TODO if not clear
@@ -88,7 +88,7 @@ grelm:array_joinMapping
 #LENGTH
 
 grelm:array_lengthMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:array_length ;
     fno:implementation   grelm:javaArray ;
 # TODO if not clear
@@ -102,7 +102,7 @@ grelm:array_lengthMapping
 #SLICE
 
 grelm:sliceMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:array_slice ;
     fno:implementation   grelm:javaArray ;
 # TODO if not clear
@@ -116,7 +116,7 @@ grelm:sliceMapping
 #REVERSE
 
 grelm:array_reverseMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:array_reverse ;
     fno:implementation   grelm:javaArray ;
 # TODO if not clear
@@ -130,7 +130,7 @@ grelm:array_reverseMapping
 #SORT
 
 grelm:array_sortMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:array_sort ;
     fno:implementation   grelm:javaArray ;
 # TODO if not clear
@@ -144,7 +144,7 @@ grelm:array_sortMapping
 #SUM
 
 grelm:array_sumMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:array_sum ;
     fno:implementation   grelm:javaArray ;
 # TODO if not clear
@@ -158,7 +158,7 @@ grelm:array_sumMapping
 #UNIQUES
 
 grelm:array_uniquesMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:array_uniques ;
     fno:implementation   grelm:javaArray ;
 # TODO if not clear
@@ -177,7 +177,7 @@ grelm:javaBoolean
 #AND
 
 grelm:andMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:boolean_and ;
     fno:implementation   grelm:javaBoolean ;
 # TODO if not clear
@@ -191,7 +191,7 @@ grelm:andMapping
 #OR
 
 grelm:orMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:boolean_or ;
     fno:implementation   grelm:javaBoolean ;
 # TODO if not clear
@@ -205,7 +205,7 @@ grelm:orMapping
 #NOT
 
 grelm:notMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:boolean_not ;
     fno:implementation   grelm:javaBoolean ;
 # TODO if not clear
@@ -219,7 +219,7 @@ grelm:notMapping
 #XOR
 
 grelm:xorMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:boolean_xor ;
     fno:implementation   grelm:javaBoolean ;
 # TODO if not clear
@@ -238,7 +238,7 @@ grelm:javaControls
 #IFTHENELSE
 
 grelm:ifthenelseMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:controls_if ;
     fno:implementation   grelm:javaControls ;
 # TODO if not clear
@@ -257,7 +257,7 @@ grelm:javaString
 #STRING_LENGTH
 
 grelm:lengthMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:string_length ;
     fno:implementation   grelm:javaString ;
 # TODO if not clear
@@ -271,7 +271,7 @@ grelm:lengthMapping
 #STRING_LENGTH
 
 grelm:string_toStringMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:string_toString ;
     fno:implementation   grelm:javaString ;
 # TODO if not clear
@@ -285,7 +285,7 @@ grelm:string_toStringMapping
 #STARTSWITH
 
 grelm:startsWithMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:string_startsWith ;
     fno:implementation   grelm:javaString ;
 # TODO if not clear
@@ -299,7 +299,7 @@ grelm:startsWithMapping
 #ENDSWITH
 
 grelm:endsWithMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:string_endsWith ;
     fno:implementation   grelm:javaString ;
 # TODO if not clear
@@ -313,7 +313,7 @@ grelm:endsWithMapping
 #CONTAINS
 
 grelm:containsMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:string_contains ;
     fno:implementation   grelm:javaString ;
 # TODO if not clear
@@ -328,7 +328,7 @@ grelm:containsMapping
 #INDEXOF
 
 grelm:indexOfMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:string_indexOf ;
     fno:implementation   grelm:javaString ;
 # TODO if not clear
@@ -342,7 +342,7 @@ grelm:indexOfMapping
 #TOLOWERCASE
 
 grelm:lowercaseMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:toLowerCase ;
     fno:implementation   grelm:javaString ;
 # TODO if not clear
@@ -356,7 +356,7 @@ grelm:lowercaseMapping
 #TOUPPERCASE
 
 grelm:uppercaseMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:toUpperCase ;
     fno:implementation   grelm:javaString ;
 # TODO if not clear
@@ -370,7 +370,7 @@ grelm:uppercaseMapping
 #TOTITLECASE
 
 grelm:titlecaseMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:string_toTitlecase ;
     fno:implementation   grelm:javaString ;
 # TODO if not clear
@@ -384,7 +384,7 @@ grelm:titlecaseMapping
 #TRIM
 
 grelm:trimMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:string_trim ;
     fno:implementation   grelm:javaString ;
 # TODO if not clear
@@ -398,7 +398,7 @@ grelm:trimMapping
 #CHOMP
 
 grelm:chompMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:string_chomp ;
     fno:implementation   grelm:javaString ;
 # TODO if not clear
@@ -412,7 +412,7 @@ grelm:chompMapping
 #SUBSTRING
 
 grelm:substringMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:string_substring ;
     fno:implementation   grelm:javaString ;
 # TODO if not clear
@@ -426,7 +426,7 @@ grelm:substringMapping
 #LASTINDEXOF
 
 grelm:lastIndexOfMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:string_lastIndexOf ;
     fno:implementation   grelm:javaString ;
 # TODO if not clear
@@ -440,7 +440,7 @@ grelm:lastIndexOfMapping
 #REPLACE
 
 grelm:string_replaceMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:string_replace ;
     fno:implementation   grelm:javaString ;
 # TODO if not clear
@@ -454,7 +454,7 @@ grelm:string_replaceMapping
 #REPLACEHCARS
 
 grelm:string_replaceCharsMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:string_replaceChars ;
     fno:implementation   grelm:javaString ;
 # TODO if not clear
@@ -468,7 +468,7 @@ grelm:string_replaceCharsMapping
 #MATCH
 
 grelm:string_matchMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:string_match ;
     fno:implementation   grelm:javaString ;
 # TODO if not clear
@@ -482,7 +482,7 @@ grelm:string_matchMapping
 #TONUMBER
 
 grelm:string_toNumberMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:string_toNumber ;
     fno:implementation   grelm:javaString ;
 # TODO if not clear
@@ -496,7 +496,7 @@ grelm:string_toNumberMapping
 #SPLIT
 
 grelm:splitMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:string_split ;
     fno:implementation   grelm:javaString ;
 # TODO if not clear
@@ -510,7 +510,7 @@ grelm:splitMapping
 #SPLITBYLENGTHS
 
 grelm:string_splitByLengthsMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:string_splitByLengths ;
     fno:implementation   grelm:javaString ;
 # TODO if not clear
@@ -524,7 +524,7 @@ grelm:string_splitByLengthsMapping
 #SMARTSPLIT
 
 grelm:string_smartSplitMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:string_smartSplit ;
     fno:implementation   grelm:javaString ;
 # TODO if not clear
@@ -538,7 +538,7 @@ grelm:string_smartSplitMapping
 #SPLITBYCHARTYPE
 
 grelm:string_splitByCharTypeMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:string_splitByCharType ;
     fno:implementation   grelm:javaString ;
 # TODO if not clear
@@ -552,7 +552,7 @@ grelm:string_splitByCharTypeMapping
 #PARTITION
 
 grelm:string_partitionMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:string_partition ;
     fno:implementation   grelm:javaString ;
 # TODO if not clear
@@ -566,7 +566,7 @@ grelm:string_partitionMapping
 #RPARTITION
 
 grelm:string_rpartitionMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:string_rpartition ;
     fno:implementation   grelm:javaString ;
 # TODO if not clear
@@ -580,7 +580,7 @@ grelm:string_rpartitionMapping
 #DIFF
 
 grelm:string_diffMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:string_diff ;
     fno:implementation   grelm:javaString ;
 # TODO if not clear
@@ -594,7 +594,7 @@ grelm:string_diffMapping
 #ESCAPE
 
 grelm:escapeMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:escape ;
     fno:implementation   grelm:javaString ;
 # TODO if not clear
@@ -608,7 +608,7 @@ grelm:escapeMapping
 #UNESCAPE
 
 grelm:string_unescapeMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:string_unescape ;
     fno:implementation   grelm:javaString ;
 # TODO if not clear
@@ -622,7 +622,7 @@ grelm:string_unescapeMapping
 #MD5
 
 grelm:md5Mapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:string_md5 ;
     fno:implementation   grelm:javaString ;
 # TODO if not clear
@@ -636,7 +636,7 @@ grelm:md5Mapping
 #SHA1
 
 grelm:sha1Mapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:string_sha1 ;
     fno:implementation   grelm:javaString ;
 # TODO if not clear
@@ -650,7 +650,7 @@ grelm:sha1Mapping
 #PHONETIC
 
 grelm:string_phoneticMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:string_phonetic ;
     fno:implementation   grelm:javaString ;
 # TODO if not clear
@@ -664,7 +664,7 @@ grelm:string_phoneticMapping
 #REINTERPRET
 
 grelm:string_reinterpretMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:string_reinterpret ;
     fno:implementation   grelm:javaString ;
 # TODO if not clear
@@ -678,7 +678,7 @@ grelm:string_reinterpretMapping
 #UNICODE
 
 grelm:string_unicodeMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:string_unicode ;
     fno:implementation   grelm:javaString ;
 # TODO if not clear
@@ -697,7 +697,7 @@ grelm:javaDate
 #NOW
 
 grelm:date_nowMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:date_now ;
     fno:implementation   grelm:javaDate ;
 # TODO if not clear
@@ -711,7 +711,7 @@ grelm:date_nowMapping
 #TODATE
 
 grelm:date_toDateMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:date_toDate ;
     fno:implementation   grelm:javaDate ;
 # TODO if not clear
@@ -725,7 +725,7 @@ grelm:date_toDateMapping
 #DIFF
 
 grelm:date_diffMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:date_diff ;
     fno:implementation   grelm:javaDate ;
 # TODO if not clear
@@ -739,7 +739,7 @@ grelm:date_diffMapping
 #INC
 
 grelm:date_incMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:date_inc ;
     fno:implementation   grelm:javaDate ;
 # TODO if not clear
@@ -753,7 +753,7 @@ grelm:date_incMapping
 #DATEPART
 
 grelm:date_datePartMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:date_datePart ;
     fno:implementation   grelm:javaDate ;
 # TODO if not clear
@@ -772,7 +772,7 @@ grelm:javaMath
 #FLOOR
 
 grelm:math_floorMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:math_floor ;
     fno:implementation   grelm:javaMath ;
 # TODO if not clear
@@ -786,7 +786,7 @@ grelm:math_floorMapping
 #CEIL
 
 grelm:math_ceilMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:math_ceil ;
     fno:implementation   grelm:javaMath ;
 # TODO if not clear
@@ -800,7 +800,7 @@ grelm:math_ceilMapping
 #ROUND
 
 grelm:math_roundMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:math_round ;
     fno:implementation   grelm:javaMath ;
 # TODO if not clear
@@ -814,7 +814,7 @@ grelm:math_roundMapping
 #MIN
 
 grelm:math_minMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:math_min ;
     fno:implementation   grelm:javaMath ;
 # TODO if not clear
@@ -828,7 +828,7 @@ grelm:math_minMapping
 #MAX
 
 grelm:math_maxMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:math_max ;
     fno:implementation   grelm:javaMath ;
 # TODO if not clear
@@ -842,7 +842,7 @@ grelm:math_maxMapping
 #MOD
 
 grelm:math_modMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:math_mod ;
     fno:implementation   grelm:javaMath ;
 # TODO if not clear
@@ -856,7 +856,7 @@ grelm:math_modMapping
 #LN
 
 grelm:math_lnMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:math_ln ;
     fno:implementation   grelm:javaMath ;
 # TODO if not clear
@@ -870,7 +870,7 @@ grelm:math_lnMapping
 #LOG
 
 grelm:math_logMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:math_log ;
     fno:implementation   grelm:javaMath ;
 # TODO if not clear
@@ -884,7 +884,7 @@ grelm:math_logMapping
 #EXP
 
 grelm:math_expMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:math_exp ;
     fno:implementation   grelm:javaMath ;
 # TODO if not clear
@@ -898,7 +898,7 @@ grelm:math_expMapping
 #POW
 
 grelm:math_powMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:math_pow ;
     fno:implementation   grelm:javaMath ;
 # TODO if not clear
@@ -917,7 +917,7 @@ grelm:javaOther
 #TYPE
 
 grelm:other_typeMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:other_type ;
     fno:implementation   grelm:javaOther ;
 # TODO if not clear
@@ -931,7 +931,7 @@ grelm:other_typeMapping
 #HASFIELD
 
 grelm:other_hasFieldMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:other_hasField ;
     fno:implementation   grelm:javaOther ;
 # TODO if not clear
@@ -945,7 +945,7 @@ grelm:other_hasFieldMapping
 #COALESCE
 
 grelm:other_coalesceMapping
-    a                    fnoi:Mapping ;
+    a                    fno:Mapping ;
     fno:function         grel:other_coalesce ;
     fno:implementation   grelm:javaOther ;
 # TODO if not clear
