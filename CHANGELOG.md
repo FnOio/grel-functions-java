@@ -7,9 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+### Fixed
+
+- array functions should use `List`, not `[]`
+
 ## [0.7.3] - 2022-03-29
 
 ### Fixed
+
 - Implementation mappings in `grel_java_mapping.ttl` used class `fnoi:Mapping` instead of `fno:Mapping` (see [GitLab issue #2](https://gitlab.ilabt.imec.be/fno/lib/grel-functions-java/-/issues/2))
 
 ## [0.7.2] - 2022-03-24

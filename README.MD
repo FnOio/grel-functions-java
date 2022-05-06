@@ -33,5 +33,11 @@ So `Integer` instead of `int`, etc.
 
 > The Function Handler for the moment only handles Classes, not primitives.
 
+### Use JAVA Lists, not Arrays
+
+So `List<Object>` instead of `Object[]`, etc.
+
+> The Function Handler for the moment only handles Lists, not Arrays.
+
 [FnO]: https://fno.io/spec/
 [GREL]: https://docs.openrefine.org/manual/grelfunctions
