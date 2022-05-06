@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,9 +40,19 @@ public class ArrayFunctions_Test {
 
     @Test
     public void unique() {
+        List<String> input = Arrays.asList("1","2","2","3");
         assertArrayEquals(
-                new String[]{"1", "2", "3"},
-                ArrayFunctions.uniques(new String[]{"1", "2", "2", "3"})
+                new String[]{"1","2","3"},
+                ArrayFunctions.uniques(new ArrayList<Object>(input)).toArray()
         );
+    }
+
+    @Test
+    public void sum() {
+        List<Integer> input = new ArrayList<>();
+        input.add(2);
+        input.add(3);
+        Integer output = ArrayFunctions.sum(input);
+        assertEquals(Integer.valueOf(5), output);
     }
 }

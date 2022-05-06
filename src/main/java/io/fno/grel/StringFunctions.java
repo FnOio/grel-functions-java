@@ -305,14 +305,14 @@ public class StringFunctions {
      * @param p regex pattern
      * @return Array of pattern matches
      */
-    public static String[] match(String s, String p) {
+    public static List<String> match(String s, String p) {
         List<String> allMatches = new ArrayList<String>();
         Matcher m = Pattern.compile(p)
                 .matcher(s);
         while (m.find()) {
             allMatches.add(m.group());
         }
-        return (String[]) allMatches.toArray();
+        return allMatches;
     }
 
     // NOTE: this was implemented in commit 5161c959985daabc90a53520b00752cc9c69b94d,
@@ -359,14 +359,14 @@ public class StringFunctions {
      * @param numbers lengths of subsequent substrings to be extracted
      * @return Array of strings after splitting
      */
-    public static String[] splitByLengths(String s, int... numbers) {
+    public static List<String> splitByLengths(String s, int... numbers) {
         List<String> output = new ArrayList<>();
         int i = 0;
         for (int n : numbers) {
             output.add(s.substring(i, i + n));
             i += n;
         }
-        return output.toArray(new String[0]);
+        return output;
     }
 
     // TODO https://github.com/OpenRefine/OpenRefine/wiki/GREL-String-Functions#splitbylengthsstring-s-number-n1-number-n2-
@@ -377,7 +377,7 @@ public class StringFunctions {
      * Guesses tab or comma separator if sep is not given.
      * Also, value.escape('javascript') is useful for previewing unprintable chars prior to using smartSplit.
      */
-    public static String[] smartSplit(String s) {
+    public static List<String> smartSplit(String s) {
         String sep;
         if (StringUtils.countMatches(s, "\t") < StringUtils.countMatches(s, ",")) {
             sep = ",";
@@ -387,8 +387,8 @@ public class StringFunctions {
         return smartSplit(s, sep);
     }
 
-    public static String[] smartSplit(String s, String sep) {
-        return s.split(sep);
+    public static List<String> smartSplit(String s, String sep) {
+        return Arrays.asList(s.split(sep));
     }
 
     /**
@@ -398,11 +398,11 @@ public class StringFunctions {
      * will result in an array of [ "H", "enry", "CT", "aylor" ]. It is useful for separating letters
      * and numbers: "BE1A3E".splitByCharType() will result in [ "BE", "1", "A", "3", "E" ].
      */
-    public static String[] splitByCharType(String value) {
-        return StringUtils.splitByCharacterType(value);
+    public static List<String> splitByCharType(String value) {
+        return Arrays.asList(StringUtils.splitByCharacterType(value));
     }
 
-    public static String[] _partition(String s, String frag, Boolean omitFragment, Boolean last) {
+    public static List<String> _partition(String s, String frag, Boolean omitFragment, Boolean last) {
         List<String> output = new ArrayList<>();
         int offset = 0;
         int index;
@@ -412,7 +412,7 @@ public class StringFunctions {
             index = s.lastIndexOf(frag);
         }
         if (index == -1) {
-            return new String[]{s, "", ""};
+            return Arrays.asList(s, "", "");
         }
         output.add(s.substring(0, index));
         if (! omitFragment) {
@@ -420,7 +420,7 @@ public class StringFunctions {
             offset += frag.length();
         }
         output.add(s.substring(index + offset));
-        return output.toArray(new String[0]);
+        return output;
     }
 
     /**
@@ -433,7 +433,7 @@ public class StringFunctions {
      * [ "inter", "nation", "alization" ]. If s does not contain fragment, it returns an array of
      * [ s, "", "" ] (the original unpartitioned string, and two empty strings).
      */
-    public static String[] partition(String s, String frag) {
+    public static List<String> partition(String s, String frag) {
         return partition(s, frag, false);
     }
 
@@ -450,7 +450,7 @@ public class StringFunctions {
      * If the omitFragment boolean is true, for example with "internationalization".partition("nation", true),
      * the fragment is not returned. The output is [ "inter", "alization" ].
      */
-    public static String[] partition(String s, String frag, Boolean omitFragment) {
+    public static List<String> partition(String s, String frag, Boolean omitFragment) {
         return _partition(s, frag, omitFragment, false);
     }
 
@@ -463,7 +463,7 @@ public class StringFunctions {
      * For example, "parallel".rpartition("a") returns 3 strings:
      * [ "par", "a", "llel" ]. Otherwise works identically to partition().
      */
-    public static String[] rpartition(String s, String frag) {
+    public static List<String> rpartition(String s, String frag) {
         return rpartition(s, frag, false);
     }
 
@@ -476,7 +476,7 @@ public class StringFunctions {
      * For example, "parallel".rpartition("a") returns 3 strings:
      * [ "par", "a", "llel" ]. Otherwise works identically to partition().
      */
-    public static String[] rpartition(String s, String frag, Boolean omitFragment) {
+    public static List<String> rpartition(String s, String frag, Boolean omitFragment) {
         return _partition(s, frag, omitFragment, true);
     }
 
@@ -606,11 +606,11 @@ public class StringFunctions {
 
     // https://docs.openrefine.org/manual/grelfunctions#unicodes
     // TODO add docstring and write unit test
-    public static String[] unicode(String s) {
+    public static List<String> unicode(String s) {
         return s.chars()
                 .mapToObj(c -> (char) c)
                 .map(c -> encodeURIComponent(String.valueOf(c)))
-                .toArray(String[]::new);
+                .toList();
     }
 
     // TODO https://github.com/OpenRefine/OpenRefine/wiki/GREL-String-Functions#unicodetypestring-s

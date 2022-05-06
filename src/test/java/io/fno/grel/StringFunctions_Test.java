@@ -15,6 +15,13 @@ public class StringFunctions_Test {
     }
 
     @Test
+    public void toStringTest() {
+        Integer input = 5;
+        String output = StringFunctions.toString(input);
+        assertEquals("5", output);
+    }
+
+    @Test
     public void startsWith() {
         String input = "one";
         Boolean output = StringFunctions.startsWith(input, "on");
@@ -63,6 +70,12 @@ public class StringFunctions_Test {
         assertEquals("Ones", output);
     }
 
+    @Test
+    public void strip() {
+        String input = " Ones   ";
+        String output = StringFunctions.strip(input);
+        assertEquals("Ones", output);
+    }
 
     @Test
     public void chomp() {
@@ -78,6 +91,34 @@ public class StringFunctions_Test {
     }
 
     @Test
+    public void substring2() {
+        String input = "Ones";
+        String output = StringFunctions.substring(input, 1, 3);
+        assertEquals("ne", output);
+    }
+
+    @Test
+    public void slice() {
+        String input = "Ones";
+        String output = StringFunctions.slice(input, 1);
+        assertEquals("nes", output);
+    }
+
+    @Test
+    public void get() {
+        String input = "Ones";
+        String output = StringFunctions.slice(input, 1);
+        assertEquals("nes", output);
+    }
+
+    @Test
+    public void indexOf() {
+        String input = "Ononones";
+        Integer output = StringFunctions.indexOf(input, "on");
+        assertSame(2, output);
+    }
+
+    @Test
     public void lastIndexOf() {
         String input = "Ononones";
         Integer output = StringFunctions.lastIndexOf(input, "on");
@@ -85,10 +126,31 @@ public class StringFunctions_Test {
     }
 
     @Test
-    public void testSubstring() {
-        String input = "Ones";
-        String output = StringFunctions.substring(input, 1, 3);
-        assertEquals("ne", output);
+    public void replace() {
+        String input = "Ononones";
+        String output = StringFunctions.replace(input, "no", "mi");
+        assertEquals("Omimines", output);
+    }
+
+    @Test
+    public void replaceChars() throws Exception {
+        String input = "Ononones";
+        String output = StringFunctions.replaceChars(input, "no", "mi");
+        assertEquals("Omimimes", output);
+    }
+
+    @Test
+    public void match() {
+        String input = "Ononones";
+        List<String> output = StringFunctions.match(input, "n.");
+        assertArrayEquals(new String[] { "no", "no", "ne" }, output.toArray());
+    }
+
+    @Test
+    public void toNumber() throws Exception {
+        String input = "4";
+        Integer output = StringFunctions.toNumber(input);
+        assertEquals(Integer.valueOf(4), output);
     }
 
     @Test
@@ -101,34 +163,36 @@ public class StringFunctions_Test {
     @Test
     public void splitByLengths() {
         assertArrayEquals(
-                new String[]{"inter", "nation", "ali"},
-                StringFunctions.splitByLengths("internationalization", 5, 6, 3)
-        );
+                new String[] { "inter", "nation", "ali" },
+                StringFunctions.splitByLengths("internationalization", 5, 6, 3).toArray());
     }
+
+    // TODO smartSplit
+
+    // TODO splitByCharType
 
     @Test
     public void partition() {
         assertArrayEquals(
-                new String[]{"inter", "nation", "alization"},
-                StringFunctions.partition("internationalization", "nation")
-        );
+                new String[] { "inter", "nation", "alization" },
+                StringFunctions.partition("internationalization", "nation").toArray());
     }
 
     @Test
     public void rpartition() {
         assertArrayEquals(
-                new String[]{"par", "a", "llel"},
-                StringFunctions.partition("parallel", "a")
-        );
+                new String[] { "par", "a", "llel" },
+                StringFunctions.partition("parallel", "a").toArray());
     }
 
     @Test
     public void rpartition_empty() {
         assertArrayEquals(
-                new String[]{"lollipop", "", ""},
-                StringFunctions.partition("lollipop", "a")
-        );
+                new String[] { "lollipop", "", "" },
+                StringFunctions.partition("lollipop", "a").toArray());
     }
+
+    // TODO diff
 
     @Test
     public void escape() {
@@ -139,6 +203,8 @@ public class StringFunctions_Test {
         output = StringFunctions.escape(input, "url");
         assertEquals("On%20es", output);
     }
+
+    // TODO unescape
 
     @Test
     public void md5() {
@@ -153,4 +219,10 @@ public class StringFunctions_Test {
         String output = StringFunctions.sha1(input);
         assertEquals("b58b5a8ced9db48b30e008b148004c1065ce53b1", output);
     }
+
+    // TODO phonetic
+
+    // TODO reinterpret
+
+    // TODO unicode
 }

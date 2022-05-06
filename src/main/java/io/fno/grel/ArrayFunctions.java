@@ -1,9 +1,11 @@
 package io.fno.grel;
 
-import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class ArrayFunctions {
 
@@ -72,39 +74,37 @@ public class ArrayFunctions {
         return StringUtils.join(a, sep);
     }
 
-    // TO-DO these functions are untested and need docstrings
-    // (brought over from commit 98360fe7f7c13dcbd51c14db12218b605bd86c16)
-
-    public static Integer length(Object[] a) {
-        return a.length;
+    // TODO these functions need docstrings
+    public static Integer length(List<Object> a) {
+        return a.size();
     }
 
-    public static Object[] slice(Object[] a, Integer from, Integer to) {
-        return Arrays.copyOfRange(a, from, to + 1);
+    public static List<Object> slice(List<Object> a, Integer from, Integer to) {
+        return a.subList(from, to + 1);
     }
 
-    public static Object[] slice(Object[] a, Integer from) {
-        return slice(a, from, a.length);
+    public static List<Object> slice(List<Object> a, Integer from) {
+        return slice(a, from, length(a));
     }
 
     // see get of strings
-    public static Object[] reverse(Object[] a) {
-        ArrayUtils.reverse(a);
+    public static List<Object> reverse(List<Object> a) {
+        Collections.reverse(a);
         return a;
     }
 
-    public static Object[] sort(Object[] a) {
-        Arrays.sort(a);
+    public static Integer sum(List<Integer> a) {
+        return a.stream().reduce(0, Integer::sum);
+    }
+
+    // TODO how to do this sort?
+    public static List<Object> sort(List<Object> a) {
+        // a.sort();
         return a;
     }
 
-    public static Integer sum(Integer[] a) {
-        return Arrays.stream(a).mapToInt(Integer::intValue).sum();
-    }
-
-    public static Object[] uniques(Object[] a) {
-        SortedSet<Object> set = new TreeSet<>(Arrays.asList(a));
-        return set.toArray(new Object[0]);
+    public static List<Object> uniques(List<Object> a) {
+        return a.stream().distinct().collect(Collectors.toList());
 
     }
 
