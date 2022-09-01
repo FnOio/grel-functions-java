@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## [0.8.0] - 2022-03-29
+
+### Added
+- Implementation of Math functions
+
 ## [0.7.3] - 2022-03-29
 
 ### Fixed
@@ -79,7 +84,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - removed deprecated GREL functions
 
-[0.7.3]: https://github.com/FnOio/grel-functions-java/compare/v0.7.1..v0.7.3
+[0.8.0]: https://github.com/FnOio/grel-functions-java/compare/v0.7.3..v0.8.0
+[0.7.3]: https://github.com/FnOio/grel-functions-java/compare/v0.7.2..v0.7.3
 [0.7.2]: https://github.com/FnOio/grel-functions-java/compare/v0.7.1..v0.7.2
 [0.7.1]: https://github.com/FnOio/grel-functions-java/compare/v0.7.0..v0.7.1
 [0.7.0]: https://github.com/FnOio/grel-functions-java/compare/v0.6.1..v0.7.0
