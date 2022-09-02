@@ -911,7 +911,7 @@ grelm:math_powMapping
 
 #ABS
 
-grelm:math_powMapping
+grelm:math_absMapping
     a                    fno:Mapping ;
     fno:function         grel:map_abs ;
     fno:implementation   grelm:javaMath ;
