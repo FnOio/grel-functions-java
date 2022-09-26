@@ -913,7 +913,7 @@ grelm:math_powMapping
 
 grelm:math_absMapping
     a                    fno:Mapping ;
-    fno:function         grel:map_abs ;
+    fno:function         grel:math_abs ;
     fno:implementation   grelm:javaMath ;
 # TODO if not clear
     fno:parameterMapping [ ] ;
