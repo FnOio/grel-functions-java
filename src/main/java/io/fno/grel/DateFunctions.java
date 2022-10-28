@@ -1,5 +1,6 @@
 package io.fno.grel;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -17,12 +18,12 @@ public class DateFunctions {
     }
 
     // TODO
-    public static String toDate(String o, String pattern) {
+    public static String toDate(String o, String pattern) throws ParseException {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-        return simpleDateFormat.format(o);
+        return simpleDateFormat.format(simpleDateFormat.parse(o));
     }
 
-    public static String toString(String date, String pattern) {
+    public static String toString(String date, String pattern) throws ParseException {
         return toDate(date, pattern);
     }
 
