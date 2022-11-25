@@ -1,6 +1,7 @@
 package io.fno.grel;
 
 import java.text.SimpleDateFormat;
+import java.time.Clock;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.temporal.TemporalField;
@@ -12,8 +13,13 @@ import java.time.temporal.TemporalUnit;
  */
 public class DateFunctions {
 
+    /**
+     * Returns the current time according to your system clock, in the ISO 8601 extended format (converted to UTC).
+     *
+     * @return  The current time in UTC
+     */
     public static LocalDateTime now() {
-        return LocalDateTime.now();
+        return LocalDateTime.now(Clock.systemUTC());
     }
 
     // TODO

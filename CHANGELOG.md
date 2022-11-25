@@ -14,6 +14,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added commons-text 1.10.0 (some classes originating from commons-lang are put in here)
 - Removed unused dependency on jackson-databind
 
+### Fixed
+- `DateFunctions.now()` returns the current time in UTC as defined by the GREL funtions (not in local timezone).
+
 ## [0.8.2] - 2022-09-26
 
 ### Added
