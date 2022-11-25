@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+### Changed
+- Require Java 11+
+
 ## [0.8.2] - 2022-09-26
 
 ### Added
