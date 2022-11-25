@@ -1,15 +1,16 @@
 package io.fno.grel;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
-
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ArrayFunctions_Test {
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class ArrayFunctionsTest {
 
     @Test
     public void get() {

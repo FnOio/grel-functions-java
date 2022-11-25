@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 - Require Java 11+
+- Updated JUnit from 4.13.2 to 5.9.1
 
 ## [0.8.2] - 2022-09-26
 

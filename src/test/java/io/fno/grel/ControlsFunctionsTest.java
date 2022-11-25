@@ -1,9 +1,10 @@
 package io.fno.grel;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
 
-public class ControlsFunctions_Test {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class ControlsFunctionsTest {
     @Test
     public void ifThenElse() {
         String one = "one";
