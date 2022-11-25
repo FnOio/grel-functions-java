@@ -1,8 +1,5 @@
 package io.fno.grel;
 
-import org.apache.commons.lang.ArrayUtils;
-import org.apache.commons.lang.StringUtils;
-
 import java.util.*;
 
 public class ArrayFunctions {
@@ -69,7 +66,7 @@ public class ArrayFunctions {
      * @return the string obtained by joining the array `a` with the separator `sep`
      */
     public static String join(List<String> a, String sep) {
-        return StringUtils.join(a, sep);
+        return String.join(sep, a);
     }
 
     // TO-DO these functions are untested and need docstrings
@@ -89,7 +86,7 @@ public class ArrayFunctions {
 
     // see get of strings
     public static Object[] reverse(Object[] a) {
-        ArrayUtils.reverse(a);
+        Collections.reverse(Arrays.asList(a));  // this also mutates a, aha!
         return a;
     }
 

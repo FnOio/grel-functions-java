@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - Require Java 11+
 - Updated JUnit from 4.13.2 to 5.9.1
+- Updated commons-lang 2.6 to commons-lang3 3.12.0
+- Added commons-text 1.10.0 (some classes originating from commons-lang are put in here)
 
 ## [0.8.2] - 2022-09-26
 

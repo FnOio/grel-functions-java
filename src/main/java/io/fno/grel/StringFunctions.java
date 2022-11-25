@@ -7,10 +7,10 @@ import org.apache.commons.codec.language.ColognePhonetic;
 import org.apache.commons.codec.language.DoubleMetaphone;
 import org.apache.commons.codec.language.Metaphone;
 import org.apache.commons.codec.language.Soundex;
-import org.apache.commons.lang.ArrayUtils;
-import org.apache.commons.lang.StringEscapeUtils;
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.WordUtils;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.text.StringEscapeUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.text.WordUtils;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
@@ -503,15 +503,15 @@ public class StringFunctions {
         String lMode = mode.toLowerCase();
         switch (lMode) {
             case "html":
-                return StringEscapeUtils.escapeHtml(s);
+                return StringEscapeUtils.escapeHtml4(s);
             case "xml":
-                return StringEscapeUtils.escapeXml(s);
+                return StringEscapeUtils.escapeXml11(s);
             case "csv":
                 return StringEscapeUtils.escapeCsv(s);
             case "url":
                 return encodeURIComponent(s);
             case "javascript":
-                return StringEscapeUtils.escapeJavaScript(s);
+                return StringEscapeUtils.escapeEcmaScript(s);
         }
         return s;
     }
@@ -525,7 +525,7 @@ public class StringFunctions {
         String mode = modeParameter.toLowerCase();
         switch (mode) {
             case "html":
-                return StringEscapeUtils.unescapeHtml(valueParameter);
+                return StringEscapeUtils.unescapeHtml4(valueParameter);
             case "xml":
                 return StringEscapeUtils.unescapeXml(valueParameter);
             case "csv":
@@ -533,7 +533,7 @@ public class StringFunctions {
             case "url":
                 return decodeURIComponent(valueParameter);
             case "javascript":
-                return StringEscapeUtils.unescapeJavaScript(valueParameter);
+                return StringEscapeUtils.unescapeEcmaScript(valueParameter);
         }
         return valueParameter;
     }

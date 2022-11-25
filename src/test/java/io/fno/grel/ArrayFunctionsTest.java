@@ -45,4 +45,13 @@ public class ArrayFunctionsTest {
                 ArrayFunctions.uniques(new String[]{"1", "2", "2", "3"})
         );
     }
+
+    @Test
+    public void testReverse() {
+        String[] input = {"one", "two", "three"};
+        Object[] expected = {"three", "two", "one"};
+
+        Object[] result = ArrayFunctions.reverse(input);
+        assertArrayEquals(expected, result);
+    }
 }
