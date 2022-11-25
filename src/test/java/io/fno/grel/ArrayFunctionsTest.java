@@ -2,13 +2,9 @@ package io.fno.grel;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ArrayFunctionsTest {
 
@@ -39,11 +35,47 @@ public class ArrayFunctionsTest {
     }
 
     @Test
+    public void testLength() {
+        String[] anArray = {"one", "two", "three"};
+        assertEquals(3, ArrayFunctions.length(anArray));
+    }
+
+    @Test
     public void unique() {
         assertArrayEquals(
                 new String[]{"1", "2", "3"},
                 ArrayFunctions.uniques(new String[]{"1", "2", "2", "3"})
         );
+    }
+
+    @Test
+    public void testSliceWithToWithinRange() {
+        Integer[] anArray = {1, 2, 3, 4, 5};
+        Integer[] result = (Integer[])ArrayFunctions.slice(anArray, 1, 4);
+
+        assertArrayEquals(
+                new Integer[]{2, 3, 4},
+                result);
+    }
+
+    @Test
+    public void testSliceWithToEqualToLength() {
+        Integer[] anArray = {1, 2, 3, 4, 5};
+        Integer[] result = (Integer[])ArrayFunctions.slice(anArray, 1, 5);
+
+        assertArrayEquals(
+                new Integer[]{2, 3, 4, 5},
+                result);
+    }
+
+    @Test
+    public void testSliceWithoutTo() {
+        Integer[] anArray = {1, 2, 3, 4, 5};
+        Integer[] result = (Integer[])ArrayFunctions.slice(anArray, 1);
+
+        assertArrayEquals(
+                new Integer[]{2, 3, 4, 5},
+                result);
     }
 
     @Test
@@ -53,5 +85,42 @@ public class ArrayFunctionsTest {
 
         Object[] result = ArrayFunctions.reverse(input);
         assertArrayEquals(expected, result);
+    }
+
+    @Test
+    public void testSortWithStrings() {
+        String[] input = {"al", "Joe", "Bob", "jim" };
+        String[] expected = {"Bob", "Joe", "al", "jim"};
+        String[] result = (String[])ArrayFunctions.sort(input);
+
+        assertArrayEquals(expected, result);
+    }
+
+    @Test
+    public void testSum() {
+        Integer[] anArray = {1, 2, 3, 4, 5};
+        int result = ArrayFunctions.sum(anArray);
+
+        assertEquals(15, result);
+    }
+
+    @Test
+    public void testUniquesPerformance() {
+
+        for (int i = 0; i < 9; i++) {
+            oneRunUnique((int)Math.pow(10,  i));
+        }
+    }
+    private void oneRunUnique(int size) {
+        Integer[] bigRandomArray = new Integer[size];
+        Random random = new Random(0);
+        for (int i = 0; i < size; i++) {
+            bigRandomArray[i] = random.nextInt(100);
+        }
+        long startTime = System.currentTimeMillis();
+        Object[] result = ArrayFunctions.uniques(bigRandomArray);
+        long endTime = System.currentTimeMillis();
+        assertTrue(bigRandomArray.length >= result.length);
+        System.out.println("uniqueTiming for " + size + ": " + (endTime - startTime));
     }
 }
