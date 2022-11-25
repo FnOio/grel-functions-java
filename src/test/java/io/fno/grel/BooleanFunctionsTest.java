@@ -36,12 +36,22 @@ public class BooleanFunctionsTest {
     }
 
     @Test
-    public void xor() {
+    public void xorFalse() {
         List<Boolean> input = new ArrayList<>();
         input.add(true);
         input.add(true);
 
         Boolean output = BooleanFunctions.xor(input);
         assertFalse(output);
+    }
+
+    @Test
+    public void xorTrue() {
+        List<Boolean> input = new ArrayList<>();
+        input.add(true);
+        input.add(false);
+
+        Boolean output = BooleanFunctions.xor(input);
+        assertTrue(output);
     }
 }
