@@ -80,4 +80,31 @@ public class DateFunctionsTest {
         long diffNs = DateFunctions.diff(d1, d2, "nanoseconds");
         assertEquals(88383600000000000L, diffNs);
     }
+
+    @Test
+    public void testInc() throws ParseException {
+        Date date1 = DateFunctions.toDate("2000-01-01", "yyyy-MM-dd");
+        Date date2 = DateFunctions.toDate("2002-10-20", "yyyy-MM-dd");
+
+        // positive inc value
+        Date resultPositiveDate = DateFunctions.inc(date1, 88383600000L, "millis");
+        assertEquals(date2, resultPositiveDate);
+
+        // negative inc value
+        Date resultNegativeDate = DateFunctions.inc(date2, -88383600000L, "millis");
+        assertEquals(date1, resultNegativeDate);
+    }
+
+    @Test
+    public void testDatePart() throws ParseException {
+        Date date = DateFunctions.toDate("2000-10-25 23:56:20:987 +02", "yyyy-MM-dd HH:mm:ss:S X");
+
+        assertEquals(2000L, DateFunctions.datePart(date, "years"));
+        assertEquals(10L, DateFunctions.datePart(date, "months"));
+        assertEquals("Thursday", DateFunctions.datePart(date, "weekday"));
+        assertEquals(21L, DateFunctions.datePart(date, "hours")); // Because it's UTC
+        assertEquals(56L, DateFunctions.datePart(date, "minutes"));
+        assertEquals(20L, DateFunctions.datePart(date, "seconds"));
+        assertEquals(987L, DateFunctions.datePart(date, "milliseconds"));
+    }
 }
