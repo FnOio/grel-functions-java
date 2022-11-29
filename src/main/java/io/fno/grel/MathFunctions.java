@@ -116,19 +116,13 @@ public class MathFunctions {
     }
 
     public static Long even(Double d) {
-        long rounded = Math.round(d);
-        if (rounded % 2 == 0) {
-            return rounded;
-        }
-        return d < rounded ? rounded - 1 : rounded + 1;
+        long rounded = Math.round(d + 0.4d);
+        return Math.abs(rounded) % 2 == 0 ? rounded : rounded + 1;
     }
 
     public static Long odd(Double d) {
-        long rounded = Math.round(d);
-        if (rounded % 2 == 1) {
-            return rounded;
-        }
-        return d < rounded ? rounded - 1 : rounded + 1;
+        long rounded = Math.round(d + 0.4d);
+        return Math.abs(rounded) % 2 == 1 ? rounded : rounded + 1;
     }
 
     // private factorial to calculate big factorials for combinatorial functions
