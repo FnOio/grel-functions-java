@@ -50,8 +50,8 @@ public class DateFunctionsTest {
 
     @Test
     public void testDiff() throws ParseException {
-        Date d1 = DateFunctions.toDate("2000-01-01", "yyyy-MM-dd");
-        Date d2 = DateFunctions.toDate("2002-10-20", "yyyy-MM-dd");
+        Date d1 = DateFunctions.toDate("2000-01-01 +02", "yyyy-MM-dd X");
+        Date d2 = DateFunctions.toDate("2002-10-20 +02", "yyyy-MM-dd X");
 
         long diffYears = DateFunctions.diff(d1, d2, "years");
         assertEquals(2, diffYears);
@@ -63,7 +63,7 @@ public class DateFunctionsTest {
         assertEquals(146, diffWeeks);
 
         long diffDays = DateFunctions.diff(d1, d2, "days");
-        assertEquals(1022, diffDays);
+        assertEquals(1023, diffDays);
 
         long diffHours = DateFunctions.diff(d1, d2, "hours");
         assertEquals(24551, diffHours); // takes diff winter / summer clock into account
