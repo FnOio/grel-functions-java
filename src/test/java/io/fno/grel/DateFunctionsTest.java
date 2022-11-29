@@ -83,8 +83,8 @@ public class DateFunctionsTest {
 
     @Test
     public void testInc() throws ParseException {
-        Date date1 = DateFunctions.toDate("2000-01-01", "yyyy-MM-dd");
-        Date date2 = DateFunctions.toDate("2002-10-20", "yyyy-MM-dd");
+        Date date1 = DateFunctions.toDate("2000-01-01 +00", "yyyy-MM-dd X");
+        Date date2 = DateFunctions.toDate("2002-10-20 +01", "yyyy-MM-dd X");
 
         // positive inc value
         Date resultPositiveDate = DateFunctions.inc(date1, 88383600000L, "millis");
