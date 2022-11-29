@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.TimeZone;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -34,6 +35,7 @@ public class DateFunctionsTest {
         calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.SECOND, 0);
         calendar.set(Calendar.MILLISECOND, 0);
+        calendar.setTimeZone(TimeZone.getTimeZone("UTC"));
         Date expectedDate = calendar.getTime();
 
         Date date = DateFunctions.toDate("2022-11-28", "yyyy-MM-dd");
@@ -50,8 +52,8 @@ public class DateFunctionsTest {
 
     @Test
     public void testDiff() throws ParseException {
-        Date d1 = DateFunctions.toDate("2000-01-01 +02", "yyyy-MM-dd X");
-        Date d2 = DateFunctions.toDate("2002-10-20 +02", "yyyy-MM-dd X");
+        Date d1 = DateFunctions.toDate("2000-01-01 UTC", "yyyy-MM-dd z");
+        Date d2 = DateFunctions.toDate("2002-10-20 UTC", "yyyy-MM-dd z");
 
         long diffYears = DateFunctions.diff(d1, d2, "years");
         assertEquals(2, diffYears);
@@ -66,32 +68,32 @@ public class DateFunctionsTest {
         assertEquals(1023, diffDays);
 
         long diffHours = DateFunctions.diff(d1, d2, "hours");
-        assertEquals(24551, diffHours); // takes diff winter / summer clock into account
+        assertEquals(24552, diffHours); // takes diff winter / summer clock into account
 
         long diffMinutes = DateFunctions.diff(d1, d2, "minutes");
-        assertEquals(1473060, diffMinutes);
+        assertEquals(1473120, diffMinutes);
 
         long diffSeconds = DateFunctions.diff(d1, d2, "seconds");
-        assertEquals(88383600, diffSeconds);
+        assertEquals(88387200, diffSeconds);
 
         long diffMs = DateFunctions.diff(d1, d2, "milliseconds");
-        assertEquals(88383600000L, diffMs);
+        assertEquals(88387200000L, diffMs);
 
         long diffNs = DateFunctions.diff(d1, d2, "nanoseconds");
-        assertEquals(88383600000000000L, diffNs);
+        assertEquals(88387200000000000L, diffNs);
     }
 
     @Test
     public void testInc() throws ParseException {
-        Date date1 = DateFunctions.toDate("2000-01-01 +00", "yyyy-MM-dd X");
-        Date date2 = DateFunctions.toDate("2002-10-20 +01", "yyyy-MM-dd X");
+        Date date1 = DateFunctions.toDate("2000-01-01 UTC", "yyyy-MM-dd z");
+        Date date2 = DateFunctions.toDate("2002-10-20 UTC", "yyyy-MM-dd z");
 
         // positive inc value
-        Date resultPositiveDate = DateFunctions.inc(date1, 88383600000L, "millis");
+        Date resultPositiveDate = DateFunctions.inc(date1, 88387200000L, "millis");
         assertEquals(date2, resultPositiveDate);
 
         // negative inc value
-        Date resultNegativeDate = DateFunctions.inc(date2, -88383600000L, "millis");
+        Date resultNegativeDate = DateFunctions.inc(date2, -88387200000L, "millis");
         assertEquals(date1, resultNegativeDate);
     }
 
@@ -106,5 +108,16 @@ public class DateFunctionsTest {
         assertEquals(56L, DateFunctions.datePart(date, "minutes"));
         assertEquals(20L, DateFunctions.datePart(date, "seconds"));
         assertEquals(987L, DateFunctions.datePart(date, "milliseconds"));
+    }
+
+    @Test
+    public void stupidDateTest() throws ParseException {
+        String dateStr = "2000-10-25 23:56:20:987 UTC";
+        String datePattern = "yyyy-MM-dd HH:mm:ss:S z";
+
+        Date date = DateFunctions.toDate(dateStr, datePattern);
+        String dateStrBack = DateFunctions.toString(date, datePattern);
+
+        assertEquals(dateStr, dateStrBack);
     }
 }

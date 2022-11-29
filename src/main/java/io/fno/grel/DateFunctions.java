@@ -6,10 +6,7 @@ import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.TextStyle;
 import java.time.temporal.*;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 
 /*
  * NOTE: brought over from commit f598c20470abdc7b30b444a1f3a382ab310c551d,
@@ -53,14 +50,20 @@ public class DateFunctions {
      * Returns the inputted object converted to a date object. Note that this deviates
      * from the GREL function toDate as defined in <a href="https://openrefine.org/docs/manual/grelfunctions#todateo-b-monthfirst-s-format1-s-format2-">toDate</a>
      *
-     * @param dateStr   The date object. A {@code toString()} is performed before
+     * @param dateStr   The String representing a date(time).
      * @param pattern   The given pattern to parse the date. See {@link SimpleDateFormat}.
      *                  If {@code null}, a best effort is done to parse the given date String.
+     *                  If no offset or zone info is detected, the time zone is assumed to be UTC.
      * @return          A {@link Date} parsed from the string.
      * @throws ParseException if {@code dateStr} cannot be parsed.
      */
     public static Date toDate(String dateStr, String pattern) throws ParseException {
         DateFormat dateFormat = pattern == null? new SimpleDateFormat() : new SimpleDateFormat(pattern);
+        // check if pattern contains offzet or zone info. If not, assume UTC
+        if (pattern == null
+                || (!pattern.contains("z") && !pattern.contains("Z") && !pattern.contains("X"))) {
+            dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+        }
         return dateFormat.parse(dateStr);
     }
 
@@ -69,10 +72,16 @@ public class DateFunctions {
      * @param date      The date to format as a String.
      * @param pattern   The given pattern to parse the date. See {@link SimpleDateFormat}.
      *                  If {@code null}, the date will be formatted according to the current local JVM settings.
+     *                  If no offset or zone info is detected, the time zone is assumed to be UTC.
      * @return          The given date formatted according to the given pattern.
      */
     public static String toString(Date date, String pattern) {
         DateFormat dateFormat = pattern == null ? new SimpleDateFormat() : new SimpleDateFormat(pattern);
+        if (pattern == null
+                || (!pattern.contains("z") && !pattern.contains("Z") && !pattern.contains("X"))) {
+            dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+        }
+        dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
         return dateFormat.format(date);
     }
 
