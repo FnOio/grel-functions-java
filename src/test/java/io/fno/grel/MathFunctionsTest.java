@@ -262,4 +262,9 @@ public class MathFunctionsTest {
         assertEquals(-4, MathFunctions.even(-4d));
     }
 
+    @Test
+    public void testQuotient() {
+        assertEquals(4, MathFunctions.quotient(9L, 2L));
+    }
+
 }
