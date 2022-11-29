@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MathFunctionsTest {
 
@@ -265,6 +266,14 @@ public class MathFunctionsTest {
     @Test
     public void testQuotient() {
         assertEquals(4, MathFunctions.quotient(9L, 2L));
+    }
+
+    @Test
+    public void testRandomNumber() {
+        for (int i = 0; i < 10000; i++) {
+            long randomNr = MathFunctions.randomNumber(-3L, 7L);
+            assertTrue(randomNr >= -3L && randomNr <= 7L);
+        }
     }
 
 }

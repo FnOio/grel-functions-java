@@ -12,6 +12,8 @@ import java.util.Random;
  * Implementations of <a href="https://docs.openrefine.org/manual/grelfunctions#math-functions">GREL math function</a>.
  */
 public class MathFunctions {
+    final static Random random = new Random();
+    
     public static Double floor(Double d) {
         return Math.floor(d);
     }
@@ -169,11 +171,12 @@ public class MathFunctions {
     }
 
     public static Long randomNumber(Long lower, Long upper) {
-        final Random random = new Random();
-        long randomLong = random.nextLong();
-        randomLong *= (upper - lower);
-        randomLong += lower;
-        return randomLong; // upper bound inclusive
+        double randomDouble = random.nextDouble();
+        long delta = upper - lower;
+        // "generate" a random within "delta"
+        long randomInDelta = (long)(randomDouble * delta);
+        // shift to the right start
+        return randomInDelta + lower;
     }
 
     public static Long multinomial(Long... args) {
