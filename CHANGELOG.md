@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Added
 - Possibility to apply a format in `StringFunctions.toString()` function
+- Documentation in code
 
 ### Changed
 - Require Java 11+
