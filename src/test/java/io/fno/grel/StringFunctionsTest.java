@@ -2,6 +2,8 @@ package io.fno.grel;
 
 import org.junit.jupiter.api.Test;
 
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -63,6 +65,13 @@ public class StringFunctionsTest {
         assertEquals("Ones", output);
     }
 
+    @Test
+    public void strip() {
+        String input = " Ones   ";
+        String output = StringFunctions.strip(input);
+        assertEquals("Ones", output);
+    }
+
 
     @Test
     public void chomp() {
@@ -75,6 +84,41 @@ public class StringFunctionsTest {
         String input = "Ones";
         String output = StringFunctions.substring(input, 1);
         assertEquals("nes", output);
+    }
+
+    @Test
+    public void slice() {
+        String input = "Ones";
+        String output = StringFunctions.slice(input, 1);
+        assertEquals("nes", output);
+    }
+
+    @Test
+    public void sliceFromTo() {
+        String input = "Ones";
+        String output = StringFunctions.slice(input, 1, 3);
+        assertEquals("ne", output);
+    }
+
+    @Test
+    public void get() {
+        String input = "Ones";
+        String output = StringFunctions.get(input, 1);
+        assertEquals("nes", output);
+    }
+
+    @Test
+    public void getFromTo() {
+        String input = "Ones";
+        String output = StringFunctions.get(input, 1, 3);
+        assertEquals("ne", output);
+    }
+
+    @Test
+    public void indexOf() {
+        String input = "internationalization";
+        int output = StringFunctions.indexOf(input, "nation");
+        assertEquals(5, output);
     }
 
     @Test
@@ -152,5 +196,104 @@ public class StringFunctionsTest {
         String input = "One";
         String output = StringFunctions.sha1(input);
         assertEquals("b58b5a8ced9db48b30e008b148004c1065ce53b1", output);
+    }
+
+    @Test
+    public void testReplace() {
+        String input = "The cow jumps over the moon and moos";
+        String output = StringFunctions.replace(input, "oo", "ee");
+        assertEquals("The cow jumps over the meen and mees", output);
+    }
+
+    @Test
+    public void testReplaceChars() throws Exception {
+        String input = "Téxt thát was optícálly recógnízéd";
+        String output = StringFunctions.replaceChars(input, "áéíóú", "aeiou");
+        String expected = "Text that was optically recognized";
+        assertEquals(expected, output);
+    }
+
+    @Test
+    public void testReplaceWithRegex() {
+        String input = "The cow jumps over the moon and moos";
+        String regex = "/\\s+/";
+        String expected = "The_cow_jumps_over_the_moon_and_moos";
+        String output = StringFunctions.replace(input, regex, "_");
+        assertEquals(expected, output);
+    }
+
+    @Test
+    public void testMatch1() {
+        String input = "230.22398, 12.3480";
+        String pattern = "/.*(\\d\\d\\d\\d)/";
+        String[] output = StringFunctions.match(input, pattern);
+        String[] expected = new String[]{"3480"};
+        assertArrayEquals(expected, output);
+    }
+
+    @Test
+    public void testMatch2() {
+        String input = "230.22398, 12.3480";
+        String pattern = "/(.*)(\\d\\d\\d\\d)/";
+        String[] output = StringFunctions.match(input, pattern);
+        String[] expected = new String[]{"230.22398, 12.", "3480"};
+        assertArrayEquals(expected, output);
+    }
+
+    @Test
+    public void testMatch3() {
+        String input = "hello 123456 goodbye";
+        String pattern = "/\\d{6}/";
+        String[] output = StringFunctions.match(input, pattern);
+        assertArrayEquals(null, output);
+    }
+
+    @Test
+    public void testMatch4() {
+        String input = "hello 123456 goodbye";
+        String pattern = "/.*\\d{6}.*/";
+        String[] output = StringFunctions.match(input, pattern);
+        String[] expected = new String[]{};
+        assertArrayEquals(expected, output);
+    }
+
+    @Test
+    public void testMatch5() {
+        String input = "hello 123456 goodbye";
+        String pattern = "/.*(\\d{6}).*/";
+        String[] output = StringFunctions.match(input, pattern);
+        String[] expected = new String[]{"123456"};
+        assertArrayEquals(expected, output);
+    }
+
+    @Test
+    public void testMatch6() {
+        String input = "hello 123456 goodbye";
+        String pattern = "/(.*)(\\d{6})(.*)/";
+        String[] output = StringFunctions.match(input, pattern);
+        String[] expected = new String[]{"hello ", "123456", " goodbye"};
+        assertArrayEquals(expected, output);
+    }
+
+    @Test
+    public void testDefaultToStringString() {
+        assertEquals("a string", StringFunctions.toString("a string"));
+    }
+
+    @Test
+    public void testDefaultToStringNumber() {
+        assertEquals("3", StringFunctions.toString(3));
+    }
+
+    @Test
+    public void testToStringWithPatternNumber() {
+        assertEquals("3", StringFunctions.toString(3.2f, "%.0f"));
+    }
+
+    @Test
+    public void testToStringWithPatternDate() throws ParseException {
+        String pattern = "yyyy-MM-dd";
+        Date date = DateFunctions.toDate("2022-12-01", pattern);
+        assertEquals("2022-12-01", StringFunctions.toString(date, pattern));
     }
 }

@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## Unreleased
+### Added
+- Possibility to apply a format in `StringFunctions.toString()` function
 
 ### Changed
 - Require Java 11+
@@ -16,6 +18,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 - `DateFunctions.now()` returns the current time in UTC as defined by the GREL funtions (not in local timezone).
+- `StringFunctions.replace()` now performs string replace as well as regex replace.
+- `StringFunctions.match()` fixed GREL regex matching
 
 ## [0.8.2] - 2022-09-26
 

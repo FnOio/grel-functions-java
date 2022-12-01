@@ -14,11 +14,12 @@ import org.apache.commons.text.WordUtils;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.security.InvalidParameterException;
+import java.util.*;
+import java.util.regex.MatchResult;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 public class StringFunctions {
 
@@ -36,13 +37,41 @@ public class StringFunctions {
 
     /**
      * Takes any value type (string, number, date, boolean, error, null) and gives a string version of that value.
-     * https://docs.openrefine.org/manual/grelfunctions#tostringo-string-format-optional
+     * This is the same as invoking {@link StringFunctions#toString(Object, String)} where {@code format == null}.
+     * @param valueParameter    The object to render as a String
+     * @return                  The {@code valueParameter} object rendered as a String.
      */
     public static String toString(Object valueParameter) {
+        return toString(valueParameter, null);
+    }
+    /**
+     * Takes any value type (string, number, date, boolean, error, null) and gives a string version of that value.
+     * <a href="https://docs.openrefine.org/manual/grelfunctions#tostringo-string-format-optional">toString</a>
+     * @param valueParameter The object to render as a String. If {@code null}, The String {@code "null"} is returned.
+     * @param format The format to apply.
+     *               If {@code valueParameter} is a Date, then the format is expected to be a {@link java.text.SimpleDateFormat}.
+     *               For other objects its {@code toString} method is invoked and then applied with
+     *               a {@link java.util.Formatter}.
+     *               If {@code fomat} is {@code null} then the default is used for the given {@code valueParameter}.
+     * @return The {@code valueParameter} object rendered as a String according to the given format.
+     * @throws IllegalFormatException  If a format string contains an illegal syntax, a format specifier that is
+     * incompatible with the given arguments, insufficient arguments given the format string, or other illegal
+     * conditions. For specification of all possible formatting errors, see the Details section of the formatter
+     * class specification.
+     */
+    public static String toString(Object valueParameter, String format) {
         if (valueParameter == null) {
             return "null";
         } else {
-            return valueParameter.toString();
+            if (valueParameter instanceof Date) {
+                return DateFunctions.toString((Date) valueParameter, format);
+            } else {
+                if (format == null) {
+                    return valueParameter.toString();
+                } else {
+                    return String.format(format, valueParameter);
+                }
+            }
         }
     }
 
@@ -71,12 +100,12 @@ public class StringFunctions {
     }
 
     /**
-     * Returns boolean indicating whether s ends with sub.
-     * For example, endsWith("food", "ood") returns true, whereas endsWith("food", "odd") returns false.
-     * You could also write the first case as "food".endsWith("ood").
+     * Returns a boolean indicating whether s contains sub, which is either a substring or a regex pattern. For example,
+     * "food".contains("oo") returns true whereas "food".contains("ee") returns false.
+     * TODO: the regex part
      *
-     * @param s
-     * @param sub
+     * @param s     string
+     * @param sub   substring
      * @return
      */
     public static Boolean contains(String s, String sub) {
@@ -104,8 +133,6 @@ public class StringFunctions {
     public static String toUppercase(String s) {
         return s.toUpperCase();
     }
-
-    // TODO https://github.com/OpenRefine/OpenRefine/wiki/GREL-String-Functions#totitlecasestring-s
 
     /**
      * https://docs.openrefine.org/manual/grelfunctions/#totitlecases
@@ -151,7 +178,7 @@ public class StringFunctions {
      * @return a copy of s with sep removed from the end if s ends with sep; otherwise, just returns s
      */
     public static String chomp(String s, String sep) {
-        return StringUtils.chomp(s, sep);
+        return StringUtils.removeEnd(s, sep);
     }
 
     // TODO fn-xpath:func-substring .
@@ -234,7 +261,8 @@ public class StringFunctions {
     }
 
     /**
-     * https://docs.openrefine.org/manual/grelfunctions#indexofs-sub
+     * <a href="https://docs.openrefine.org/manual/grelfunctions#indexofs-sub">indexOf</a>
+     * <br>
      * Returns the first character index of sub as it first occurs in s; or, returns -1 if s does not contain sub.
      * @param s
      * @param sub
@@ -257,21 +285,31 @@ public class StringFunctions {
     }
 
     /**
-     * https://docs.openrefine.org/manual/grelfunctions#replaces-s-or-p-find-s-replace
-     * Returns the string obtained by replacing the find string with the replace string
-     * in the inputted string.
+     * <a href="https://docs.openrefine.org/manual/grelfunctions#replaces-s-or-p-find-s-replace">replace</a>
+     * <br>
+     * Returns the string obtained by replacing the {@code find} string with the {@code replace} string
+     * in the input string.
      * @param s string to replace in
-     * @param f target substring to replace
-     * @param r string to replace target substring with
+     * @param find target substring or regular expression to replace. Strings starting and ending with {@code /} are
+     *             concidered regular expressions, e.g. "/\\s+/".
+     * @param replace string to replace target substring or regular expression matches with
      * @return s with substring f replaced by string r
+     * @throws PatternSyntaxException – if the regular expression's syntax is invalid
      */
-    public static String replace(String s, String f, String r) {
-        return s.replaceAll(f, r);
+    public static String replace(String s, String find, String replace) {
+        if (find.startsWith("/") && find.endsWith("/")) {
+            // then f is a regex!
+            String regex = find.substring(1, find.length() - 1);
+            return s.replaceAll(regex, replace);
+        } else {
+            // f is an ordinary String
+            return s.replace(find, replace);
+        }
     }
 
-    // TODO add unit test for this function
     /**
-     * https://docs.openrefine.org/manual/grelfunctions#replacecharss-s-find-s-replace
+     * <a href="https://docs.openrefine.org/manual/grelfunctions#replacecharss-s-find-s-replace">replaceChars</a>
+     * <br>
      * Returns the string obtained by replacing a character in s, identified by find,
      * with the corresponding character identified in replace.
      * You cannot use this to replace a single character with more than one character.
@@ -286,7 +324,7 @@ public class StringFunctions {
      *         characters to replace.
      */
     public static String replaceChars(String s, String f, String r) throws Exception {
-        if (f.length() > r.length()) {
+        if (f.length() != r.length()) {
             throw new Exception("You must provide as many replacement characters as target characters.");
         }
         for (int i=0; i<f.length(); i++) {
@@ -298,21 +336,33 @@ public class StringFunctions {
     }
 
     /**
-     * https://docs.openrefine.org/manual/grelfunctions#matchs-p
+     * <a href="https://docs.openrefine.org/manual/grelfunctions#matchs-p">match</a>
+     * <br>
      * Attempts to match the string s in its entirety against the regex pattern p and,
      * if the pattern is found, outputs an array of all capturing groups (found in order).
+     * // TODO this does not behave as the GREL definition
      * @param s string
      * @param p regex pattern
      * @return Array of pattern matches
      */
     public static String[] match(String s, String p) {
-        List<String> allMatches = new ArrayList<String>();
-        Matcher m = Pattern.compile(p)
-                .matcher(s);
-        while (m.find()) {
-            allMatches.add(m.group());
+        if (p.length() < 2 || !p.startsWith("/") || !p.endsWith("/")) {
+            throw new InvalidParameterException("A regex in GREL must start and end with '/'");
         }
-        return (String[]) allMatches.toArray();
+        String pattern = "^" + p.substring(1, p.length() - 1) + "$";    // GREL seems to implicitly add begin and end markers
+        List<String> allMatches = new ArrayList<>();
+        Matcher m = Pattern.compile(pattern)
+                .matcher(s);
+
+        int nrGroups = m.groupCount();
+        if (m.find()) {
+            for (int i = 1; i <= nrGroups; i++) {
+                allMatches.add(m.group(i)); // group(0) is always the complete input string if there's a match!
+            }
+            return allMatches.toArray(new String[]{});
+        } else {
+            return null;
+        }
     }
 
     // NOTE: this was implemented in commit 5161c959985daabc90a53520b00752cc9c69b94d,
