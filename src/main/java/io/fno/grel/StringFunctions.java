@@ -401,7 +401,8 @@ public class StringFunctions {
     }
 
     /**
-     * https://docs.openrefine.org/manual/grelfunctions#splitbylengthss-n1-n2-
+     * <a href="https://docs.openrefine.org/manual/grelfunctions#splitbylengthss-n1-n2-">splitByLength</a>
+     * <br>
      * Returns the array of strings obtained by splitting s into substrings with the given
      * lengths. For example, "internationalization".splitByLengths(5, 6, 3) returns an array
      * of 3 strings: [ "inter", "nation", "ali" ]. Excess characters are discarded.
@@ -422,10 +423,13 @@ public class StringFunctions {
     // TODO https://github.com/OpenRefine/OpenRefine/wiki/GREL-String-Functions#splitbylengthsstring-s-number-n1-number-n2-
 
     /**
-     * https://docs.openrefine.org/manual/grelfunctions#smartsplits-s-or-p-sep-optional
-     * Returns the array of strings obtained by splitting s by the separator sep. Handles quotes properly.
+     * <a href="https://docs.openrefine.org/manual/grelfunctions#smartsplits-s-or-p-sep-optional">smartSplit</a>
+     * Returns the array of strings obtained by splitting s by the separator sep.
      * Guesses tab or comma separator if sep is not given.
      * Also, value.escape('javascript') is useful for previewing unprintable chars prior to using smartSplit.
+     * TODO: this is not "smart" enough
+     * @param s The input string to split
+     * @return An array where each element is a part of the split input string.
      */
     public static String[] smartSplit(String s) {
         String sep;
@@ -437,8 +441,24 @@ public class StringFunctions {
         return smartSplit(s, sep);
     }
 
+    /**
+     * <a href="https://docs.openrefine.org/manual/grelfunctions#smartsplits-s-or-p-sep-optional">smartSplit</a>
+     * Returns the array of strings obtained by splitting s by the separator sep.
+     * Guesses tab or comma separator if sep is not given.
+     * Also, value.escape('javascript') is useful for previewing unprintable chars prior to using smartSplit.
+     * TODO: this is not "smart" enough
+     * @param s The input string to split
+     * @param sep The separator. {@code /.../} is concidered a regex.
+     * @return An array where each element is a part of the split input string.
+     */
     public static String[] smartSplit(String s, String sep) {
-        return s.split(sep);
+        if (sep.startsWith("/") && sep.endsWith("/")) {
+            // then we have a regex!
+            String pattern = sep.substring(1, sep.length() - 1);
+            return s.split(pattern);
+        } else {
+            return StringUtils.split(s, sep);
+        }
     }
 
     /**

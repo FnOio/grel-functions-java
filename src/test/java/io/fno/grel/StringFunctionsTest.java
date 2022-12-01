@@ -314,4 +314,41 @@ public class StringFunctionsTest {
         String input = "5.25448574558";
         assertEquals(new BigDecimal("5.25448574558"), StringFunctions.toNumber(input));
     }
+
+    @Test
+    public void testSmartSplitWithoutSepComma() {
+        String input = "Hello, world";
+        String[] expexted = {"Hello", " world"};
+        assertArrayEquals(expexted, StringFunctions.smartSplit(input));
+    }
+
+    @Test
+    public void testSmartSplitWithoutSepTab() {
+        String input = "Hello\tworld";
+        String[] expexted = {"Hello", "world"};
+        assertArrayEquals(expexted, StringFunctions.smartSplit(input));
+    }
+
+    @Test
+    public void testSmartSplitWithSep() {
+        String input = "Hello__world";
+        String[] expexted = {"Hello", "world"};
+        assertArrayEquals(expexted, StringFunctions.smartSplit(input, "__"));
+    }
+
+    @Test
+    public void testSmartSplitWithSepRegex() {
+        String input = "Hello world";
+        String[] expexted = {"He", "o wor","d"};
+        String[] output = StringFunctions.smartSplit(input, "/l+/");
+        assertArrayEquals(expexted, output);
+    }
+
+    @Test
+    public void testSmartSplitOnNewLine() {
+        String input = "Hello\nworld";
+        String[] expexted = {"Hello", "world"};
+        String[] output = StringFunctions.smartSplit(input, "\n");
+        assertArrayEquals(expexted, output);
+    }
 }
