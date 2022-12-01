@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Updated commons-lang 2.6 to commons-lang3 3.12.0
 - Added commons-text 1.10.0 (some classes originating from commons-lang are put in here)
 - Removed unused dependency on jackson-databind
+- let `StringFunctions.split()` return an array instead of a list.
 
 ### Fixed
 - `DateFunctions.now()` returns the current time in UTC as defined by the GREL funtions (not in local timezone).

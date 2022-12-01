@@ -16,7 +16,10 @@ import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.nio.charset.Charset;
 import java.security.InvalidParameterException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.IllegalFormatException;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
@@ -393,8 +396,8 @@ public class StringFunctions {
      * @param sep separator
      * @return the array of strings obtained by splitting `s` at wherever `sep` is found in it
      */
-    public static List<String> split(String s, String sep) {
-        return Arrays.asList(s.split(sep));
+    public static String[] split(String s, String sep) {
+        return s.split(sep);
     }
 
     /**

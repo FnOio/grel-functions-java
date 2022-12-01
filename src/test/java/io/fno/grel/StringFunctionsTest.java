@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.Date;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -139,8 +138,8 @@ public class StringFunctionsTest {
     @Test
     public void split() {
         String input = "Ones";
-        List<String> output = StringFunctions.split(input, "ne");
-        assertEquals(2, output.size());
+        String[] output = StringFunctions.split(input, "ne");
+        assertArrayEquals(new String[]{"O", "s"}, output);
     }
 
     @Test
