@@ -376,4 +376,13 @@ public class StringFunctionsTest {
         String output = StringFunctions.diff(input1, input2);
         assertEquals(expected, output);
     }
+
+    @Test
+    public void unescapeTest() {
+        String input = "AT&amp;amp;T";
+        String expected = "AT&T";
+        String htmlEscaped = StringFunctions.unescape(input, "html");
+        String output = StringFunctions.unescape(htmlEscaped, "xml");
+        assertEquals(expected, output);
+    }
 }

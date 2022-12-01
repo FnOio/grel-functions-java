@@ -611,9 +611,13 @@ public class StringFunctions {
     }
 
     /**
-     * https://docs.openrefine.org/manual/grelfunctions#unescapes-s-mode
+     * <a href="https://docs.openrefine.org/manual/grelfunctions#unescapes-s-mode">unescape</a>
+     * <br>
      * Unescapes s in the given escaping mode. The mode can be one of: "html", "xml",
      * "csv", "url", "javascript". Note that quotes are required around your mode.
+     * @param valueParameter    The string to unescape
+     * @param modeParameter     The mode {@code valueParameter} is escaped in
+     * @return  The unescaped string
      */
     public static String unescape(String valueParameter, String modeParameter) {
         String mode = modeParameter.toLowerCase();
