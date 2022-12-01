@@ -170,7 +170,7 @@ public class StringFunctionsTest {
     public void rpartition_empty() {
         assertArrayEquals(
                 new String[]{"lollipop", "", ""},
-                StringFunctions.partition("lollipop", "a")
+                StringFunctions.rpartition("lollipop", "a")
         );
     }
 

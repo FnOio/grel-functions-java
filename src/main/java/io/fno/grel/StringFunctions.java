@@ -463,6 +463,7 @@ public class StringFunctions {
 
     /**
      * <a href="https://docs.openrefine.org/manual/grelfunctions#splitbychartypes">splitByCharType</a>
+     * <br>
      * Returns an array of strings obtained by splitting s into groups of consecutive characters
      * each time the characters change Unicode categories. For example, "HenryCTaylor".splitByCharType()
      * will result in an array of [ "H", "enry", "CT", "aylor" ]. It is useful for separating letters
@@ -497,57 +498,73 @@ public class StringFunctions {
     }
 
     /**
-     * https://docs.openrefine.org/manual/grelfunctions#partitions-s-or-p-fragment-b-omitfragment-optional
+     * <a href="https://docs.openrefine.org/manual/grelfunctions#partitions-s-or-p-fragment-b-omitfragment-optional">partition</a>
+     * <br>
      * Returns an array of strings [ a, fragment, z ] where a is the substring within s before the
-     * first occurrence of fragment, and z is the substring after fragment. Fragment can be a
-     * string or a regex.
-     *
+     * first occurrence of fragment, and z is the substring after fragment.
+     * Fragment cannot be a regex at this moment.
+     * <br>
      * For example, "internationalization".partition("nation") returns 3 strings:
      * [ "inter", "nation", "alization" ]. If s does not contain fragment, it returns an array of
      * [ s, "", "" ] (the original unpartitioned string, and two empty strings).
+     * @param s The string to paratition
+     * @param frag The fragment
+     * @return  An array where each element is a part of the input string.
      */
     public static String[] partition(String s, String frag) {
         return partition(s, frag, false);
     }
 
     /**
-     * https://docs.openrefine.org/manual/grelfunctions#partitions-s-or-p-fragment-b-omitfragment-optional
+     * <a href="https://docs.openrefine.org/manual/grelfunctions#partitions-s-or-p-fragment-b-omitfragment-optional">partition</a>
      * Returns an array of strings [ a, fragment, z ] where a is the substring within s before the
-     * first occurrence of fragment, and z is the substring after fragment. Fragment can be a
-     * string or a regex.
-     *
+     * first occurrence of fragment, and z is the substring after fragment. Fragment cannot be a regex at this moment.
+     * <br>
      * For example, "internationalization".partition("nation") returns 3 strings:
      * [ "inter", "nation", "alization" ]. If s does not contain fragment, it returns an array of
      * [ s, "", "" ] (the original unpartitioned string, and two empty strings).
-     *
+     * <br>
      * If the omitFragment boolean is true, for example with "internationalization".partition("nation", true),
      * the fragment is not returned. The output is [ "inter", "alization" ].
+     * @param s The string to paratition
+     * @param frag The fragment
+     * @param omitFragment {@code true} if the fragment is not to be included in the output
+     * @return  An array where each element is a part of the input string.
      */
     public static String[] partition(String s, String frag, Boolean omitFragment) {
         return _partition(s, frag, omitFragment, false);
     }
 
     /**
-     * https://docs.openrefine.org/manual/grelfunctions#rpartitions-s-or-p-fragment-b-omitfragment-optional
+     * <a href="https://docs.openrefine.org/manual/grelfunctions#rpartitions-s-or-p-fragment-b-omitfragment-optional">rpartition</a>
+     * <br>
      * Returns an array of strings [ a, fragment, z ] where a is the substring within s before
      * the last occurrence of fragment, and z is the substring after the last instance of fragment.
      * (Rpartition means “reverse partition.”)
-     *
+     * <br>
      * For example, "parallel".rpartition("a") returns 3 strings:
      * [ "par", "a", "llel" ]. Otherwise works identically to partition().
+     * @param s The string to paratition
+     * @param frag The fragment
+     * @return  An array where each element is a part of the input string.
      */
     public static String[] rpartition(String s, String frag) {
         return rpartition(s, frag, false);
     }
 
     /**
-     * https://docs.openrefine.org/manual/grelfunctions#rpartitions-s-or-p-fragment-b-omitfragment-optional
+     * <a href="https://docs.openrefine.org/manual/grelfunctions#rpartitions-s-or-p-fragment-b-omitfragment-optional">rpartition</a>
+     * <br>
      * Returns an array of strings [ a, fragment, z ] where a is the substring within s before
      * the last occurrence of fragment, and z is the substring after the last instance of fragment.
      * (Rpartition means “reverse partition.”)
-     *
+     * <br>
      * For example, "parallel".rpartition("a") returns 3 strings:
      * [ "par", "a", "llel" ]. Otherwise works identically to partition().
+     * @param s The string to paratition
+     * @param frag The fragment
+     * @param omitFragment {@code true} if the fragment is not to be included in the output
+     * @return  An array where each element is a part of the input string.
      */
     public static String[] rpartition(String s, String frag, Boolean omitFragment) {
         return _partition(s, frag, omitFragment, true);
