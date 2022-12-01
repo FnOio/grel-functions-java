@@ -351,4 +351,20 @@ public class StringFunctionsTest {
         String[] output = StringFunctions.smartSplit(input, "\n");
         assertArrayEquals(expexted, output);
     }
+
+    @Test
+    public void testSmartSplitByCharTypeCase() {
+        String input = "HenryCTaylor";
+        String[] expexted = {"H", "enry", "CT", "aylor"};
+        String[] output = StringFunctions.splitByCharType(input);
+        assertArrayEquals(expexted, output);
+    }
+
+    @Test
+    public void testSmartSplitByCharTypeNumbers() {
+        String input = "BE1A3E";
+        String[] expexted = {"BE", "1", "A", "3", "E"};
+        String[] output = StringFunctions.splitByCharType(input);
+        assertArrayEquals(expexted, output);
+    }
 }

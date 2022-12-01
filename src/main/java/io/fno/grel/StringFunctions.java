@@ -462,11 +462,14 @@ public class StringFunctions {
     }
 
     /**
-     * https://docs.openrefine.org/manual/grelfunctions#splitbychartypes
+     * <a href="https://docs.openrefine.org/manual/grelfunctions#splitbychartypes">splitByCharType</a>
      * Returns an array of strings obtained by splitting s into groups of consecutive characters
      * each time the characters change Unicode categories. For example, "HenryCTaylor".splitByCharType()
      * will result in an array of [ "H", "enry", "CT", "aylor" ]. It is useful for separating letters
      * and numbers: "BE1A3E".splitByCharType() will result in [ "BE", "1", "A", "3", "E" ].
+     *
+     * @param value The string to split by character type
+     * @return An array where each element is a part of the split input string.
      */
     public static String[] splitByCharType(String value) {
         return StringUtils.splitByCharacterType(value);
