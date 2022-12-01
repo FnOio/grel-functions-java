@@ -367,4 +367,13 @@ public class StringFunctionsTest {
         String[] output = StringFunctions.splitByCharType(input);
         assertArrayEquals(expexted, output);
     }
+
+    @Test
+    public void testDiff() {
+        String input1 = "cacti";
+        String input2 = "cactus";
+        String expected = "us";
+        String output = StringFunctions.diff(input1, input2);
+        assertEquals(expected, output);
+    }
 }

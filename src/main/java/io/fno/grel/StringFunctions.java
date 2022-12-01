@@ -572,11 +572,15 @@ public class StringFunctions {
 
 
     /**
-     * https://docs.openrefine.org/manual/grelfunctions#diffs1-s2-s-timeunit-optional
+     * <a href="https://docs.openrefine.org/manual/grelfunctions#diffs1-s2-s-timeunit-optional">diff</a>
+     * <br>
      * Takes two strings and compares them, returning a string. Returns the remainder
      * of s2 starting with the first character where they differ.
-     *
+     * <br>
      * For example, diff("cacti", "cactus") returns "us".
+     * @param o1 The first string to compare
+     * @param o2 The second string to compare
+     * @return The difference between the two strings
      */
     public static String diff(String o1, String o2) {
         return StringUtils.difference(o1, o2);
