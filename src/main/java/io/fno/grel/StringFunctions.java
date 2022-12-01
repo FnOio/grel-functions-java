@@ -639,50 +639,57 @@ public class StringFunctions {
     /**
      * Returns the MD5 hash of an object. If fed something other than a string (array, number, date, etc.), md5() will convert it to a string and deliver the hash of the string.
      *
-     * @param s
-     * @return
+     * @param s The object to take the MD5 hash from
+     * @return  The MD5 hash of {@code s}
      */
-    public static String md5(String s) {
-        return DigestUtils.md5Hex(s);
+    public static String md5(Object s) {
+        return DigestUtils.md5Hex(s.toString());
     }
 
     /**
      * Returns the SHA-1 hash of an object. If fed something other than a string (array, number, date, etc.), sha1() will convert it to a string and deliver the hash of the string.
      *
-     * @param s
-     * @return
+     * @param s The object to take the SHA-1 hash from
+     * @return  The SHA-1 hash of {@code s}
      */
-    public static String sha1(String s) {
-        return DigestUtils.sha1Hex(s);
+    public static String sha1(Object s) {
+        return DigestUtils.sha1Hex(s.toString());
     }
 
     // TODO https://github.com/OpenRefine/OpenRefine/wiki/GREL-String-Functions#phoneticstring-s-string-encoding
 
     /**
-     * https://docs.openrefine.org/manual/grelfunctions#phonetics-s-encoding
+     * <a href="https://docs.openrefine.org/manual/grelfunctions#phonetics-s-encoding">phonectic</a>
+     * <br>
      * Returns a phonetic encoding of a string, based on an available phonetic algorithm.
      * Can be one of the following supported phonetic methods: metaphone, doublemetaphone, metaphone3, soundex, cologne.
      *
      * @param s string to encode
      * @param mode "doublemetaphone", "metaphone", "metaphone3", "soundex", or "cologne"
      * @return encoded string
-     * @throws EncoderException
+     * @throws EncoderException When encoding {@code s} fails.
      */
     public static String phonetic(String s, String mode) throws EncoderException {
         Encoder encoder;
         switch (mode) {
             case "doublemetaphone":
-                encoder = new DoubleMetaphone();
+                DoubleMetaphone dEncoder = new DoubleMetaphone();
+                dEncoder.setMaxCodeLen(s.length() * 2);
+                encoder = dEncoder;
                 break;
             case "metaphone":
-                encoder = new Metaphone();
             case "metaphone3":
                 // TODO Find Metaphone 3
-                encoder = new Metaphone();
+                Metaphone mEnc = new Metaphone();
+                mEnc.setMaxCodeLen(s.length());
+                encoder = mEnc;
+                break;
             case "soundex":
                 encoder = new Soundex();
+                break;
             case "cologne":
                 encoder = new ColognePhonetic();
+                break;
             default:
                 throw new IllegalStateException("Unexpected value: " + mode);
         }

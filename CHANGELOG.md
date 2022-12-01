@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `StringFunctions.replace()` now performs string replace as well as regex replace.
 - `StringFunctions.match()`: fixed GREL regex matching
 - `StringFunctions.toNumber()`: expanded conversion to `Number`, basically covering all numbers, not just integers.
+- `StringFunctions.phonetic()`: the right encoder was not selected; the metaphone and double methaphone encoders were not configured correctly.
 
 ## [0.8.2] - 2022-09-26
 

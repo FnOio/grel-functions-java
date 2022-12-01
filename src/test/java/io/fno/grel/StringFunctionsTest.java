@@ -1,5 +1,6 @@
 package io.fno.grel;
 
+import org.apache.commons.codec.EncoderException;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -383,6 +384,38 @@ public class StringFunctionsTest {
         String expected = "AT&T";
         String htmlEscaped = StringFunctions.unescape(input, "html");
         String output = StringFunctions.unescape(htmlEscaped, "xml");
+        assertEquals(expected, output);
+    }
+
+    @Test
+    public void testPhoneticMetaphone() throws EncoderException {
+        String input = "Ruth Prawer Jhabvala";
+        String expected = "R0PRWRJHBFL";
+        String output = StringFunctions.phonetic(input, "metaphone");
+        assertEquals(expected, output);
+    }
+
+    @Test
+    public void testPhonecticSoundex() throws EncoderException {
+        String input = "Tymczak";
+        String expected = "T522";
+        String output = StringFunctions.phonetic(input, "soundex");
+        assertEquals(expected, output);
+    }
+
+    @Test
+    public void testPhonecticCologne() throws EncoderException {
+        String input = "Wikipedia";
+        String expected = "3412";
+        String output = StringFunctions.phonetic(input, "cologne");
+        assertEquals(expected, output);
+    }
+
+    @Test
+    public void testPhoneticDoubleMetaphone() throws EncoderException {
+        String input = "Schmidt";
+        String expected = "XMT";
+        String output = StringFunctions.phonetic(input, "doublemetaphone");
         assertEquals(expected, output);
     }
 }
