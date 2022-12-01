@@ -2,6 +2,7 @@ package io.fno.grel;
 
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
@@ -295,5 +296,23 @@ public class StringFunctionsTest {
         String pattern = "yyyy-MM-dd";
         Date date = DateFunctions.toDate("2022-12-01", pattern);
         assertEquals("2022-12-01", StringFunctions.toString(date, pattern));
+    }
+
+    @Test
+    public void testToNumberInteger() {
+        int input = 5;
+        assertEquals(5, StringFunctions.toNumber(input));
+    }
+
+    @Test
+    public void testToNumberDouble() {
+        double input = 5.25448574558d;
+        assertEquals(5.25448574558d, StringFunctions.toNumber(input));
+    }
+
+    @Test
+    public void testToNumberDoubleAsString() {
+        String input = "5.25448574558";
+        assertEquals(new BigDecimal("5.25448574558"), StringFunctions.toNumber(input));
     }
 }

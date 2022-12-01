@@ -8,15 +8,15 @@ import org.apache.commons.codec.language.DoubleMetaphone;
 import org.apache.commons.codec.language.Metaphone;
 import org.apache.commons.codec.language.Soundex;
 import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.text.StringEscapeUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.text.StringEscapeUtils;
 import org.apache.commons.text.WordUtils;
 
 import java.io.UnsupportedEncodingException;
+import java.math.BigDecimal;
 import java.nio.charset.Charset;
 import java.security.InvalidParameterException;
 import java.util.*;
-import java.util.regex.MatchResult;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
@@ -365,24 +365,21 @@ public class StringFunctions {
         }
     }
 
-    // NOTE: this was implemented in commit 5161c959985daabc90a53520b00752cc9c69b94d,
-    //       but I don't think it implemented the same behavior as described at
-    //       https://docs.openrefine.org/manual/grelfunctions#replacecharss-s-find-s-replace
-    //       so I have not carried it over for now.
-    //       - Maxime Cannoodt
-    // TODO https://github.com/OpenRefine/OpenRefine/wiki/GREL-String-Functions#findstring-s-regexp-p
-
     /**
      * Returns a string converted to a number. Will attempt to convert other formats into a string,
      * then into a number. If the value is already a number, it will return the number.
-     * https://docs.openrefine.org/manual/grelfunctions#tonumbers
+     * <a href="https://docs.openrefine.org/manual/grelfunctions#tonumbers">toNumber</a>
+     * @param o the object to turn into a Number
+     * @return A Number represented by the {@code o}.
+     * @throws NumberFormatException    if o.toString() is not a valid representation of a BigDecimal.
+     *
      */
-    public static Integer toNumber(Object o) {
-        if (o.getClass().equals(Integer.class)) {
-            return (Integer) o;
+    public static Number toNumber(Object o) {
+        if (o instanceof Number) {
+            return (Number)o;
+        } else {
+            return new BigDecimal(o.toString());
         }
-        String str = o.toString();
-        return Integer.parseInt(str);
     }
 
     /**
