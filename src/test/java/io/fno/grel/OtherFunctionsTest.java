@@ -35,4 +35,19 @@ public class OtherFunctionsTest {
         boolean hasNoField = OtherFunctions.hasField(five, "Shrek");
         assertFalse(hasNoField);
     }
+
+    @Test
+    public void testCoalesceNonNull() {
+        Object[] arrayWithNonNullObjects = {null, 5, "Shrek"};
+        int expected = 5;
+        Object result = OtherFunctions.coalesce(arrayWithNonNullObjects);
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testCoalesceNull() {
+        Object[] arrayWithNullObjects = {null, null, null};
+        Object result = OtherFunctions.coalesce(arrayWithNullObjects);
+        assertNull(result);
+    }
 }
