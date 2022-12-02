@@ -1,13 +1,14 @@
 package io.fno.grel;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class BooleanFunctions_Test {
+public class BooleanFunctionsTest {
     @Test
     public void and() {
         List<Boolean> input = new ArrayList<>();
@@ -35,12 +36,22 @@ public class BooleanFunctions_Test {
     }
 
     @Test
-    public void xor() {
+    public void xorFalse() {
         List<Boolean> input = new ArrayList<>();
         input.add(true);
         input.add(true);
 
         Boolean output = BooleanFunctions.xor(input);
         assertFalse(output);
+    }
+
+    @Test
+    public void xorTrue() {
+        List<Boolean> input = new ArrayList<>();
+        input.add(true);
+        input.add(false);
+
+        Boolean output = BooleanFunctions.xor(input);
+        assertTrue(output);
     }
 }

@@ -49,6 +49,9 @@ public class BooleanFunctions {
         for (Boolean b1 : b) {
             if (b1) {
                 numberOfTrues++;
+                if (numberOfTrues > 1) {
+                    return false;
+                }
             }
         }
         return numberOfTrues == 1;

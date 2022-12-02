@@ -6,6 +6,27 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## Unreleased
+### Added
+- Possibility to apply a format in `StringFunctions.toString()` function
+- Documentation in code
+
+### Changed
+- Require Java 11+
+- Updated JUnit from 4.13.2 to 5.9.1
+- Updated commons-lang 2.6 to commons-lang3 3.12.0
+- Added commons-text 1.10.0 (some classes originating from commons-lang are put in here)
+- Removed unused dependency on jackson-databind
+- let `StringFunctions.split()` return an array instead of a list.
+
+### Fixed
+- `DateFunctions.now()` returns the current time in UTC as defined by the GREL funtions (not in local timezone).
+- `StringFunctions.replace()` now performs string replace as well as regex replace.
+- `StringFunctions.match()`: fixed GREL regex matching
+- `StringFunctions.toNumber()`: expanded conversion to `Number`, basically covering all numbers, not just integers.
+- `StringFunctions.phonetic()`: the right encoder was not selected; the metaphone and double methaphone encoders were not configured correctly.
+- `StringFunctions.reinterpret()`: add target encoding which is necessary to perform the right conversion.
+- `StringFunctions.unicode()`: use code points instead of uri encoding.
+- `OtherFunctions.type()`: return the name of the type instead of the Class of the type.
 
 ## [0.8.2] - 2022-09-26
 
