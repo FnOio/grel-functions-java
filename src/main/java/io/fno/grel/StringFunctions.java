@@ -352,7 +352,6 @@ public class StringFunctions {
      * <br>
      * Attempts to match the string s in its entirety against the regex pattern p and,
      * if the pattern is found, outputs an array of all capturing groups (found in order).
-     * // TODO this does not behave as the GREL definition
      * @param s string
      * @param p regex pattern
      * @return Array of pattern matches
