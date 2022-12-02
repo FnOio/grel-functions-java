@@ -109,7 +109,7 @@ public class StringFunctions {
      *
      * @param s     string
      * @param sub   substring
-     * @return
+     * @return      {@code true} if {@code s} contains {@code sub}.
      */
     public static Boolean contains(String s, String sub) {
         return s.contains(sub);
@@ -138,10 +138,11 @@ public class StringFunctions {
     }
 
     /**
-     * https://docs.openrefine.org/manual/grelfunctions/#totitlecases
+     * <a href="https://docs.openrefine.org/manual/grelfunctions/#totitlecases">toTitlecase</a>
+     * <br>
      * Returns string s converted into titlecase: a capital letter starting each word, and the rest of the letters lowercase.
      *
-     * @param s
+     * @param s The string to convert into title case
      * @return capitalized string
      */
     public static String toTitlecase(String s) {
@@ -149,7 +150,8 @@ public class StringFunctions {
     }
 
     /**
-     * https://docs.openrefine.org/manual/grelfunctions#trims
+     * <a href="https://docs.openrefine.org/manual/grelfunctions#trims">trim</a>
+     * <br>
      * Returns a copy of the string, with leading and trailing whitespace removed.
      * For example, `trim(" island ")` returns the string `island`.
      *
@@ -161,7 +163,8 @@ public class StringFunctions {
     }
 
     /**
-     * https://docs.openrefine.org/manual/grelfunctions#strips
+     * <a href="https://docs.openrefine.org/manual/grelfunctions#strips">strip</a>
+     * <br>
      * Returns a copy of the string s with leading and trailing whitespace removed.
      * For example, " island ".strip() returns the string “island”. Identical to trim().
      * @param s string
@@ -174,7 +177,7 @@ public class StringFunctions {
     /**
      * Returns a copy of s with sep removed from the end if s ends with sep; otherwise, just returns s.
      * For example, chomp("hardly", "ly") and chomp("hard", "ly") both return the string hard.
-     * https://github.com/OpenRefine/OpenRefine/wiki/GREL-String-Functions#chompstring-s-string-sep
+     * <a href="https://github.com/OpenRefine/OpenRefine/wiki/GREL-String-Functions#chompstring-s-string-sep">chomp</a>
      *
      * @param s   string
      * @param sep sep
@@ -218,7 +221,8 @@ public class StringFunctions {
     }
 
     /**
-     * https://docs.openrefine.org/manual/grelfunctions#slices-n-from-n-to-optional
+     * <a href="https://docs.openrefine.org/manual/grelfunctions#slices-n-from-n-to-optional">slice</a>
+     * <br>
      * Identical to substring() in relation to strings.
      * @param s    string
      * @param from character index from
@@ -230,7 +234,8 @@ public class StringFunctions {
     }
 
     /**
-     * https://docs.openrefine.org/manual/grelfunctions#slices-n-from-n-to-optional
+     * <a href="https://docs.openrefine.org/manual/grelfunctions#slices-n-from-n-to-optional">slice</a>
+     * <br>
      * Identical to substring() in relation to strings.
      * @param s    string
      * @param from character index from
@@ -241,7 +246,7 @@ public class StringFunctions {
     }
 
     /**
-     * https://docs.openrefine.org/manual/grelfunctions#slices-n-from-n-to-optional
+     * <a href="https://docs.openrefine.org/manual/grelfunctions#slices-n-from-n-to-optional">get</a>
      * Identical to substring() in relation to strings.
      * @param s    string
      * @param from character index from
@@ -253,7 +258,8 @@ public class StringFunctions {
     }
 
     /**
-     * https://docs.openrefine.org/manual/grelfunctions#slices-n-from-n-to-optional
+     * <a href="https://docs.openrefine.org/manual/grelfunctions#slices-n-from-n-to-optional">get</a>
+     * <br>
      * Identical to substring() in relation to strings.
      * @param s    string
      * @param from character index from
@@ -267,21 +273,24 @@ public class StringFunctions {
      * <a href="https://docs.openrefine.org/manual/grelfunctions#indexofs-sub">indexOf</a>
      * <br>
      * Returns the first character index of sub as it first occurs in s; or, returns -1 if s does not contain sub.
-     * @param s
-     * @param sub
-     * @return character index
+     * @param s     The string to find {@code sub} in.
+     * @param sub   The substring to search for in {@code s}
+     * @return      the first character index of {@code sub} as it first occurs in {@code s};
+     *              or, returns {@code -1} if {@code s} does not contain {@code sub}.
      */
     public static Integer indexOf(String s, String sub) {
         return s.indexOf(sub);
     }
 
     /**
-     * https://docs.openrefine.org/manual/grelfunctions/#lastindexofs-sub
-     * Returns the first character index of sub as it last occurs in s; or, returns -1 if s does not contain sub.
+     * <a href="https://docs.openrefine.org/manual/grelfunctions/#lastindexofs-sub">lastindexof</a>
+     * <br>
+     * Returns the last character index of sub as it last occurs in s; or, returns -1 if s does not contain sub.
      *
-     * @param s
-     * @param sub
-     * @return character index
+     * @param s     The string to search {@code sub} for.
+     * @param sub   The substring to search for in {@code s}.
+     * @return      the last character index of {@code sub} as it first occurs in {@code s};
+     *              or, returns {@code -1} if {@code s} does not contain {@code sub}.
      */
     public static Integer lastIndexOf(String s, String sub) {
         return s.lastIndexOf(sub);
@@ -316,7 +325,7 @@ public class StringFunctions {
      * Returns the string obtained by replacing a character in s, identified by find,
      * with the corresponding character identified in replace.
      * You cannot use this to replace a single character with more than one character.
-     *
+     * <br>
      * For example, replaceChars("Téxt thát was optícálly recógnízéd", "áéíóú", "aeiou")
      * returns the string “Text that was optically recognized”.
      * @param s The string to search and replace characters in
@@ -773,7 +782,7 @@ public class StringFunctions {
     private static String decodeURIComponent(String encodedURI) {
         char actualChar;
 
-        StringBuffer buffer = new StringBuffer();
+        StringBuilder buffer = new StringBuilder();
 
         int bytePattern, sumb = 0;
 
