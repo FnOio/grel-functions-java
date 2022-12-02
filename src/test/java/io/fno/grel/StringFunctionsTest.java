@@ -3,7 +3,9 @@ package io.fno.grel;
 import org.apache.commons.codec.EncoderException;
 import org.junit.jupiter.api.Test;
 
+import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
+import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.util.Date;
 
@@ -417,5 +419,21 @@ public class StringFunctionsTest {
         String expected = "XMT";
         String output = StringFunctions.phonetic(input, "doublemetaphone");
         assertEquals(expected, output);
+    }
+
+    @Test
+    public void testReinterpret() throws UnsupportedEncodingException {
+        // produce bytes of a string with unicode chars.
+        String inputString = "\uD83D\uDD28 and \uD83D\uDD2B"; // 🔨 and 🔫
+        byte[] utf8Bytes = inputString.getBytes(StandardCharsets.UTF_8);
+
+
+        // It will look weird if we try to read this as Latin-encoded: ð¨ and ð«
+        String latinStringFromUTF16Bytes = new String(utf8Bytes, StandardCharsets.ISO_8859_1);
+        assertEquals("ð\u009F\u0094¨ and ð\u009F\u0094«", latinStringFromUTF16Bytes);
+
+        // so here comes reinterpret to the rescue: interpret that weird Latin string as UTF-8 again!
+        String outputString = StringFunctions.reinterpret(latinStringFromUTF16Bytes, "utf-8", "ISO-8859-1");
+        assertEquals(inputString, outputString);
     }
 }

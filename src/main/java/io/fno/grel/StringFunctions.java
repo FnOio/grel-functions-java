@@ -697,10 +697,20 @@ public class StringFunctions {
     }
 
     /**
-     * https://docs.openrefine.org/manual/grelfunctions#reinterprets-s-encodertarget-s-encodersource
+     * <a href="https://docs.openrefine.org/manual/grelfunctions#reinterprets-s-encodertarget-s-encodersource">reinterpret</a>
+     * <br>
+     * Returns s reinterpreted through the given character encoders. You must supply one of the
+     * <a href="https://docs.oracle.com/en/java/javase/11/intl/supported-encodings.html#GUID-187BA718-195F-4C39-B0D5-F3FDF02C7205">supported encodings</a>
+     * for each of the original source and the target output.
+     *
+     * @param s The string to reinterpret
+     * @param encoderTarget The target encoding of {@code s} (or how we want {@code s} to be encoded)
+     * @param encoderSource Source encoding of {@code s} (or how the bytes of {@code s} are actually to be interpreted)
+     * @return A new String with the right value and encoding
      */
-    public static String reinterpret(String s, String encoder) {
-        return new String(s.getBytes(), Charset.forName(encoder));
+    public static String reinterpret(String s, String encoderTarget, String encoderSource) throws UnsupportedEncodingException {
+        byte[] sourceBytes = s.getBytes(encoderSource);
+        return new String(sourceBytes, encoderTarget);
     }
 
     // TODO https://github.com/OpenRefine/OpenRefine/wiki/GREL-String-Functions#fingerprintstring-s
