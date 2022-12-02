@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `StringFunctions.phonetic()`: the right encoder was not selected; the metaphone and double methaphone encoders were not configured correctly.
 - `StringFunctions.reinterpret()`: add target encoding which is necessary to perform the right conversion.
 - `StringFunctions.unicode()`: use code points instead of uri encoding.
+- `OtherFunctions.type()`: return the name of the type instead of the Class of the type.
 
 ## [0.8.2] - 2022-09-26
 
