@@ -14,7 +14,7 @@ import org.apache.commons.text.WordUtils;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -719,13 +719,24 @@ public class StringFunctions {
 
     // TODO https://github.com/OpenRefine/OpenRefine/wiki/GREL-String-Functions#ngramfingerprintstring-s-number-n
 
-    // https://docs.openrefine.org/manual/grelfunctions#unicodes
-    // TODO add docstring and write unit test
-    public static String[] unicode(String s) {
-        return s.chars()
-                .mapToObj(c -> (char) c)
-                .map(c -> encodeURIComponent(String.valueOf(c)))
-                .toArray(String[]::new);
+    /**
+     * <a href="https://docs.openrefine.org/manual/grelfunctions#unicodes">unicode</a>
+     * Returns an array of ints describing each character of s in their full unicode notation.
+     * For example, "Bernice Rubens".unicode() outputs
+     * [ 66, 101, 114, 110, 105, 99, 101, 32, 82, 117, 98, 101, 110, 115 ].
+     * @param s The string to represent as unicode notation
+     * @return  An array of integers representing unicode code points of string {@code s}.
+     */
+    public static int[] unicode(String s) {
+        if (s == null) {
+            return null;
+        }
+
+        int[] output = new int[s.length()];
+        for (int i = 0; i < s.length(); i++) {
+            output[i] = s.codePointAt(i);
+        }
+        return output;
     }
 
     // TODO https://github.com/OpenRefine/OpenRefine/wiki/GREL-String-Functions#unicodetypestring-s
@@ -737,27 +748,26 @@ public class StringFunctions {
     private static final String ALLOWED_CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.!~*'()";
 
     private static String encodeURIComponent(String input) {
+        if (input == null) {
+            return null;
+        }
+
         if (StringUtils.isEmpty(input)) {
             return input;
         }
 
         int l = input.length();
         StringBuilder o = new StringBuilder(l * 3);
-        try {
-            for (int i = 0; i < l; i++) {
-                String e = input.substring(i, i + 1);
-                if (!ALLOWED_CHARS.contains(e)) {
-                    Byte[] b = ArrayUtils.toObject(e.getBytes("utf-8"));
-                    o.append(getHex(b));
-                    continue;
-                }
-                o.append(e);
+        for (int i = 0; i < l; i++) {
+            String e = input.substring(i, i + 1);
+            if (!ALLOWED_CHARS.contains(e)) {
+                Byte[] b = ArrayUtils.toObject(e.getBytes(StandardCharsets.UTF_8));
+                o.append(getHex(b));
+                continue;
             }
-            return o.toString();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+            o.append(e);
         }
-        return input;
+        return o.toString();
     }
 
     private static String decodeURIComponent(String encodedURI) {

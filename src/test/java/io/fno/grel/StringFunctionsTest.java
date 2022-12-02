@@ -436,4 +436,12 @@ public class StringFunctionsTest {
         String outputString = StringFunctions.reinterpret(latinStringFromUTF16Bytes, "utf-8", "ISO-8859-1");
         assertEquals(inputString, outputString);
     }
+
+    @Test
+    public void testUnicode() {
+        String input = "Bernice Rubens";
+        int[] expected = {66, 101, 114, 110, 105, 99, 101, 32, 82, 117, 98, 101, 110, 115 };
+        int[] output = StringFunctions.unicode(input);
+        assertArrayEquals(expected, output);
+    }
 }

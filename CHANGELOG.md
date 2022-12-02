@@ -25,6 +25,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `StringFunctions.toNumber()`: expanded conversion to `Number`, basically covering all numbers, not just integers.
 - `StringFunctions.phonetic()`: the right encoder was not selected; the metaphone and double methaphone encoders were not configured correctly.
 - `StringFunctions.reinterpret()`: add target encoding which is necessary to perform the right conversion.
+- `StringFunctions.unicode()`: use code points instead of uri encoding.
 
 ## [0.8.2] - 2022-09-26
 
