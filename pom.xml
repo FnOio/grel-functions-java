@@ -5,7 +5,7 @@
 
     <groupId>com.github.fnoio</groupId>
     <artifactId>grel-functions-java</artifactId>
-    <version>v0.9.0</version>
+    <version>v0.9.1</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>

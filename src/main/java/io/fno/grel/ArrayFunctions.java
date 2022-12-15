@@ -63,7 +63,8 @@ public class ArrayFunctions {
      * @return the string obtained by joining the array `a` with the separator `sep`
      */
     public static String join(List<String> a, String sep) {
-        return String.join(sep, a);
+        final String separator = sep == null ? "" : sep;
+        return String.join(separator, a);
     }
 
     // TO-DO these functions are untested and need docstrings
