@@ -202,7 +202,7 @@ public class DateFunctions {
      * @throws NullPointerException if {@code localDateTime} is null.
      * @throws IllegalArgumentException  if {@code localDateTime} is too large to represent as a Date
      */
-    private static Date toDate(final LocalDateTime localDateTime) {
+    public static Date toDate(final LocalDateTime localDateTime) {
         return Date.from(localDateTime.atZone(ZoneId.of("UTC")).toInstant());
     }
 
