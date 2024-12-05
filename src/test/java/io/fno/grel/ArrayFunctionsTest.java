@@ -10,13 +10,10 @@ public class ArrayFunctionsTest {
 
     @Test
     public void get() {
-        Map<String, Object> testMap = new HashMap<>();
-        testMap.put("test", "testValue");
         List<String> testList = new ArrayList<>();
         testList.add("testValue1");
         testList.add("testValue2");
         testList.add("testValue3");
-        assertEquals("testValue", ArrayFunctions.get(testMap, "test"));
         assertEquals("testValue2", ArrayFunctions.get(testList, 1));
         List<String> expectedList = new ArrayList<>();
         expectedList.add("testValue2");

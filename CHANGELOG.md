@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 - `DateFunctions#toData` should be public.
+- `ArrayFunctions#get` takes a `List` as parameter and returns a `List` as described in `grel.ttl`, not `Object`s.
 
 ## [0.9.1] - 2022-12-15
 

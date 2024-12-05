@@ -15,7 +15,7 @@ public class ArrayFunctions {
      * @param from from index (either Integer or String, must be )
      * @return Depends on actual arguments
      */
-    public static Object get(Object a, Object from) {
+    public static Object get(List<?> a, Integer from) {
         return ArrayFunctions.get(a, from, null);
     }
 
@@ -30,28 +30,11 @@ public class ArrayFunctions {
      * @param to   to index (optional, exclusive)
      * @return Depends on actual arguments
      */
-    public static Object get(Object a, Object from, Integer to) {
-        if (a instanceof List) {
-            List<?> a_array = (List<?>) a;
-            if (from instanceof Integer) {
-                if (to == null) {
-                    return a_array.get((Integer) from);
-                }
-                return a_array.subList((Integer) from, to);
-            }
-            throw new Error("'a' is a List, so 'from' parameter must be Integer");
+    public static List<?> get(List<?> a, Integer from, Integer to) {
+        if (to == null) {
+            to = from + 1;
         }
-        if (a instanceof Map) {
-            if (to != null) {
-                throw new Error("'a' is a Map, so no 'to' parameter is allowed");
-            }
-            if (from instanceof Integer || from instanceof String) {
-                Map<?,?> a_map = (Map<?,?>) a;
-                return a_map.get(from);
-            }
-            throw new Error("'a' is a Map, so 'from' parameter should be Integer or String");
-        }
-        throw new Error("'a' is not a List or a Map");
+        return a.subList(from, to);
     }
 
     /**
