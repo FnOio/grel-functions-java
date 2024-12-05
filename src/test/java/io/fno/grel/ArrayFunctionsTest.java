@@ -14,7 +14,7 @@ public class ArrayFunctionsTest {
         testList.add("testValue1");
         testList.add("testValue2");
         testList.add("testValue3");
-        assertEquals("testValue2", ArrayFunctions.get(testList, 1));
+        assertEquals(List.of("testValue2"), ArrayFunctions.get(testList, 1));
         List<String> expectedList = new ArrayList<>();
         expectedList.add("testValue2");
         expectedList.add("testValue3");
