@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+### Fixed
+- `MathFunctions#quotient` took `Long`s as input parameter, but this should be `Number`.
+- Updated commons-lang3 to 3.14.0
+- Updated commons-text to 1.11.0
+- Updated commons-codec to 1.17.0
+
 ## [0.10.0] - 2024-12-05
 
 ### Fixed

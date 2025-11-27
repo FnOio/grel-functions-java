@@ -166,8 +166,8 @@ public class MathFunctions {
         return BigInteger.valueOf(l1).multiply(BigInteger.valueOf(l2)).abs().divide(BigInteger.valueOf(gcd(l1, l2))).longValue();
     }
 
-    public static Long quotient(Long l1, Long l2) {
-        return l1 / l2;
+    public static Number quotient(Number l1, Number l2) {
+        return Math.floor(l1.doubleValue() / l2.doubleValue());
     }
 
     public static Long randomNumber(Long lower, Long upper) {

@@ -265,7 +265,7 @@ public class MathFunctionsTest {
 
     @Test
     public void testQuotient() {
-        assertEquals(4, MathFunctions.quotient(9L, 2L));
+        assertEquals(4d, MathFunctions.quotient(9d, 2d));
     }
 
     @Test
