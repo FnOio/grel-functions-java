@@ -5,6 +5,16 @@ It also serves as a 'best-practice' example of how to implement your own FnO fun
 
 ## Installation
 
+Import as Maven dependency (Use [JitPack](https://www.jitpack.io/)):
+
+```xml
+<dependency>
+    <groupId>com.github.fnoio</groupId>
+    <artifactId>grel-functions-java</artifactId>
+    <version>v0.10.1-SNAPSHOT</version>
+</dependency>
+```
+Or build it yourself (you'll need Maven + JDK >= 17):
 ```shell
 mvn install
 ```
