@@ -15,4 +15,11 @@ public class ControlsFunctions {
         }
         return eFalse;
     }
+
+    public static Object ifThenElse(Boolean b, Object eTrue) {
+        if (b) {
+            return eTrue;
+        }
+        return null;
+    }
 }
