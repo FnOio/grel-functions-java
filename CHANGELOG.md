@@ -9,9 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 - Don't build fat jar
+- Require Java 17 or later
 
 ### Added
-- A function in `ControlFunctions` that tests operator overloading in Function Agent
+- A function in `ControlsFunctions` that tests operator overloading in Function Agent
 
 ## [v0.10.1] - 2025-11-27
 
