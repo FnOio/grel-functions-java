@@ -98,6 +98,8 @@ Tests are plain unit tests: each test class (for example `StringFunctionsTest`) 
 
 ## Release process
 
+Step-by-step instructions are in [RELEASE.md](RELEASE.md); this section explains the tooling.
+
 `bump-version.sh <version>` (for example `./bump-version.sh v0.10.2`) performs a release:
 
 1. sets the version in `pom.xml` with `mvn versions:set`;

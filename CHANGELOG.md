@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Require Java 17 or later
 
 ### Added
+- `RELEASE.md`: step-by-step instructions for publishing a release.
 - A function in `ControlsFunctions` that tests operator overloading in Function Agent
 
 ## [v0.10.1] - 2025-11-27
