@@ -27,7 +27,7 @@ Where things live:
 
 ## Agent request contract (for AI agents/LLMs)
 
-<!-- software-handbook contract: 2026-10-07 -->
+<!-- software-handbook contract: 2026-10-08 -->
 
 Every implementation request handled by an AI agent/LLM follows these constraints:
 
@@ -35,8 +35,9 @@ Every implementation request handled by an AI agent/LLM follows these constraint
   - fix the specific failing case or issue named in the request;
   - preserve existing passing behavior unless explicitly asked not to;
   - add or update a regression test when needed.
-- Make the smallest coherent patch.
+- Make the smallest coherent patch. A documentation error found along the way is fixed in the same patch.
 - Leave the code leaner after every request: remove what the change makes redundant (duplicate tests, parameters and options that no longer do anything, helpers that duplicate each other, comments that only repeat the code), and reuse shared functionality instead of adding a local variant. Use SpotBugs (`mvn -B compile spotbugs:check`), compiler warnings (`mvn compile`) and IDE inspections to find unused code.
+- Fix a transient environment problem (a stale PATH, a shell or editor that needs a restart) in the environment, by restarting or reconfiguring it; add no code that works around it.
 - **Push back** when a request would violate an established principle (e.g. breaking test hermeticity). Explain the principle and suggest a documentation-only fix instead of silently implementing the harmful change.
 - Update this handbook so the change is documented as well as implemented.
   - Document only the latest state, integrated in the surrounding narrative (principles, behavior, rationale), including the choices made and why.
@@ -102,6 +103,7 @@ Tests are plain unit tests: each test class (for example `StringFunctionsTest`) 
 1. sets the version in `pom.xml` with `mvn versions:set`;
 2. updates the `<version>` in the README dependency snippet;
 3. optionally adds the version to `CHANGELOG.md` with `changefrog`;
-4. optionally commits `CHANGELOG.md`, `README.md` and `pom.xml`, pushes, and creates and pushes a git tag named after the version.
+4. optionally commits `CHANGELOG.md`, `README.md` and `pom.xml`, pushes, and creates and pushes a git tag named after the version;
+5. after that push, moves the version to the next patch `-SNAPSHOT` (e.g. `v0.10.2-SNAPSHOT` after `v0.10.1`) and commits and pushes that as "Prepare for next development cycle".
 
 Versions carry a `v` prefix (for example `v0.10.1`); JitPack builds the artifact from the git tag.
