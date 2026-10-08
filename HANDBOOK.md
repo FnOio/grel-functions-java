@@ -45,6 +45,7 @@ Every implementation request handled by an AI agent/LLM follows these constraint
 - Do not stop at making tests green; align the implementation with the specification or intended design, and document the semantic reason in this handbook.
 - Never remove or change existing tests (code or fixtures) without explicit permission. A change to an existing fixture (expected output, input, or data) is validated by the maintainer before it is kept, also when a tool writes it: propose the change with its reason, and keep it only after approval.
 - Update `CHANGELOG.md` for implementation changes: keep `## Unreleased` a short summary of what changed since the last release. A feature that is new since the last release is one Added line, which later fixes update instead of getting lines of their own; lines are for what a user of the last release notices.
+- Before a release, propose a review of everything changed since the previous release: the code for correctness, and the documentation and changelog for accuracy and brevity.
 - Check whether `README.md` needs updates for user-visible behavior or workflow changes, and update it when needed.
 - Write documentation (this handbook, READMEs, `TODO.md`, `CHANGELOG.md`, code comments) as plain positive statements: say what is true and leave out the contrast ("X, not Y"). Keep a negative only when it is the point itself, such as a prohibition, a warning, or a known limitation.
 - If there are difficulties during fulfillment, document them in the most appropriate existing handbook location (create a new chapter only when truly necessary) so future requests start with better context.
@@ -70,7 +71,7 @@ Design principles:
 - Every function is a `public static` method, so an FnO function handler can call it without instantiating a class.
 - Parameters and return types use Java wrapper classes (`Integer`, `Boolean`, ...) instead of primitives, because the FnO function handler handles classes only.
 - Function semantics and Javadoc descriptions follow the GREL documentation.
-- Overloaded methods (for example the two `ControlsFunctions.ifThenElse` variants) represent optional GREL parameters.
+- The two-argument `ControlsFunctions.ifThenElse` overload exercises function-agent's overload resolution: function-agent selects it when a call to `grel:controls_if` omits the optional `eFalse` parameter.
 
 Runtime dependencies are Apache `commons-lang3`, `commons-text` and `commons-codec`.
 
@@ -90,7 +91,7 @@ The build uses Maven with a plain `pom.xml`:
 - `mvn install` builds the library jar and installs it locally.
 - `mvn test` runs the JUnit 5 (Jupiter) tests.
 
-The compiler release level is Java 17 (`maven.compiler.release`), which is also the minimum JDK for building and for library users; the README states JDK 17 or later, and CI tests on JDK 17 (`maven:3-eclipse-temurin-17-alpine`). The consumers MappingWeaver-java and rmlmapper-java target Java 21. The GitLab CI pipeline has a single `test` stage that runs `mvn $MAVEN_CLI_OPTS test`.
+The compiler release level is Java 17 (`maven.compiler.release`, applied by the pinned `maven-compiler-plugin`); CI tests on `maven:3-eclipse-temurin-17-alpine`. The GitLab CI pipeline has a single `test` stage that runs `mvn $MAVEN_CLI_OPTS test`.
 
 SpotBugs is the linter. The setup (`spotbugs-maven-plugin` 4.10.3.0 with SpotBugs 4.10.3) lives in `<pluginManagement>` of `pom.xml`, mirrors MappingWeaver-java and is bound to no phase. Run it with `mvn -B compile spotbugs:check`. Known state: 0 findings.
 
@@ -98,14 +99,6 @@ Tests are plain unit tests: each test class (for example `StringFunctionsTest`) 
 
 ## Release process
 
-Step-by-step instructions are in [RELEASE.md](RELEASE.md); this section explains the tooling.
+[RELEASE.md](RELEASE.md) holds the steps, performed with `bump-version.sh`.
 
-`bump-version.sh <version>` (for example `./bump-version.sh v0.10.2`) performs a release:
-
-1. sets the version in `pom.xml` with `mvn versions:set`;
-2. updates the `<version>` in the README dependency snippet;
-3. optionally adds the version to `CHANGELOG.md` with `changefrog`;
-4. optionally commits `CHANGELOG.md`, `README.md` and `pom.xml`, pushes, and creates and pushes a git tag named after the version;
-5. after that push, moves the version to the next patch `-SNAPSHOT` (e.g. `v0.10.2-SNAPSHOT` after `v0.10.1`) and commits and pushes that as "Prepare for next development cycle".
-
-Versions carry a `v` prefix (for example `v0.10.1`); JitPack builds the artifact from the git tag.
+Versions carry a `v` prefix (for example `v0.10.1`). JitPack builds the artifact from the GitHub tag with the JDK set in `jitpack.yml`.

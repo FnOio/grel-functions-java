@@ -21,13 +21,8 @@ mvn install
 
 ## Quick start
 
-`src/main/java/io/fno/grel` contains code to actual functions.
-Note how they currently are all public and static.
-Their description is taken directly from [GREL].
-These implementations are [mapped](https://fno.io/spec/#ontology-concrete) to [FnO] descriptions.
-How these descriptions look like, you can find in `src/main/resources/grel_java_mapping.ttl`.
-Using the `fno:function` predicate, they are linked to Function descriptions.
-The function descriptions, you can find at <http://users.ugent.be/~bjdmeest/function/grel.ttl#>.
+`src/main/java/io/fno/grel` contains the functions as public static methods, described as in [GREL].
+`src/main/resources/grel_java_mapping.ttl` [maps](https://fno.io/spec/#ontology-concrete) them to the [FnO] function descriptions at <http://users.ugent.be/~bjdmeest/function/grel.ttl#>; [HANDBOOK.md](HANDBOOK.md) explains the mapping file.
 
 ## Testing
 
@@ -37,11 +32,9 @@ mvn test
 
 ## Best practices
 
-### Use JAVA Classes, not primites
+### Use wrapper classes
 
-So `Integer` instead of `int`, etc.
-
-> The Function Handler for the moment only handles Classes, not primitives.
+Use wrapper classes (`Integer`, `Boolean`, ...) for parameters and return types: the FnO function handler handles classes only.
 
 [FnO]: https://fno.io/spec/
 [GREL]: https://docs.openrefine.org/manual/grelfunctions

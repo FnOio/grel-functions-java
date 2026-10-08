@@ -7,14 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
-### Changed
-- `bump-version.sh` moves the version to the next patch `-SNAPSHOT` after a pushed release, replacing the manual "Prepare for next development cycle" commit.
-- Don't build fat jar
-- Require Java 17 or later
-
 ### Added
-- `RELEASE.md`: step-by-step instructions for publishing a release.
-- A function in `ControlsFunctions` that tests operator overloading in Function Agent
+- `ControlsFunctions.ifThenElse(Boolean, Object)`: returns the second argument when the condition is true, and `null` otherwise.
+
+### Changed
+- Requires Java 17 or later.
+- Release tooling: `RELEASE.md` documents the steps; `bump-version.sh` checks the version format and moves to the next patch `-SNAPSHOT` after a release.
+
+### Removed
+- The `jar-with-dependencies` jar; dependencies resolve transitively from the POM.
 
 ## [v0.10.1] - 2025-11-27
 
@@ -136,8 +137,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - removed deprecated GREL functions
 
-[v0.10.1]: https://github.com/FnOio/grel-functions-java/compare/v0.9.0..v0.9.1
-[0.10.0]: https://github.com/FnOio/grel-functions-java/compare/v0.9.0..v0.9.1
+[v0.10.1]: https://github.com/FnOio/grel-functions-java/compare/v0.10.0..v0.10.1
+[0.10.0]: https://github.com/FnOio/grel-functions-java/compare/v0.9.1..v0.10.0
 [0.9.1]: https://github.com/FnOio/grel-functions-java/compare/v0.9.0..v0.9.1
 [0.9.0]: https://github.com/FnOio/grel-functions-java/compare/v0.8.2..v0.9.0
 [0.8.2]: https://github.com/FnOio/grel-functions-java/compare/v0.7.3..v0.8.2
