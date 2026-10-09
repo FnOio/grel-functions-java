@@ -5,7 +5,7 @@ set -e
 
 if [ -z "$1" ]
 then
-	echo 'Version parameter not given. Invoke as e.g. ./bump-version.sh v1.0.0'.
+	echo 'Version parameter not given. Invoke as e.g. ./bump-version.sh 1.0.0'.
 	exit 1
 fi
 
@@ -23,9 +23,9 @@ function yes_or_no {
 
 VERSION=$1
 
-# A release version is vX.Y.Z; the next development version is derived from it.
-if [[ ! $VERSION =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ && $VERSION != testrelease-* ]]; then
-	echo "Version must be vX.Y.Z or testrelease-*, got: $VERSION"
+# A release version is X.Y.Z; the next development version is derived from it.
+if [[ ! $VERSION =~ ^[0-9]+\.[0-9]+\.[0-9]+$ && $VERSION != testrelease-* ]]; then
+	echo "Version must be X.Y.Z or testrelease-*, got: $VERSION"
 	exit 1
 fi
 
@@ -35,20 +35,20 @@ echo 'Updating pom.xml...'
 mvn versions:set -DnewVersion=$VERSION -DgenerateBackupPoms=false
 
 echo 'Updating README.md...'
-sed -i -e "s|<version>.*<\/version>|<version>$VERSION</version>|" README.md
+# JitPack names the version after the tag, so the README snippet carries the `v` prefix.
+sed -i -e "s|<version>.*<\/version>|<version>v$VERSION</version>|" README.md
 
 if [ ! "$(yes_or_no 'Do you also want to add the version to CHANGELOG.md?')" ]
 then
 	changefrog -n $VERSION
 fi
 
-tagname=$VERSION
-
-if [ ! "$(yes_or_no Do you also want to commit the changes, create a git tag $tagname and push it?)" ]
+tagname="v$VERSION"
+if [ ! "$(yes_or_no "Do you also want to commit the changes, create a git tag $tagname and push it?")" ]
 then
 	git add CHANGELOG.md README.md pom.xml
 	git commit -m "Update version to $VERSION"
-	git push origin
+	git push
 	git tag $tagname
 	git push origin $tagname
 
@@ -59,6 +59,6 @@ then
 		mvn versions:set -DnewVersion=$NEXT -DgenerateBackupPoms=false
 		git add pom.xml
 		git commit -m "Prepare for next development cycle"
-		git push origin
+		git push
 	fi
 fi

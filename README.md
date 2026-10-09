@@ -11,7 +11,7 @@ Import as Maven dependency (Use [JitPack](https://www.jitpack.io/)):
 <dependency>
     <groupId>com.github.fnoio</groupId>
     <artifactId>grel-functions-java</artifactId>
-    <version>0.10.2</version>
+    <version>v0.10.2</version>
 </dependency>
 ```
 Or build it yourself (you'll need Maven + JDK >= 17):

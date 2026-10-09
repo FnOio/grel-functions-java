@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+### Changed
+- `bump-version.sh` takes the version without `v` (`X.Y.Z`, as in `pom.xml`) and tags it `vX.Y.Z`; the README snippet shows the JitPack version `vX.Y.Z`.
+
 ## [0.10.2] - 2026-10-08
 
 ### Added
@@ -139,7 +142,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - removed deprecated GREL functions
 
-[0.10.2]: https://github.com/FnOio/grel-functions-java/compare/v0.10.0..v0.10.1
+[0.10.2]: https://github.com/FnOio/grel-functions-java/compare/v0.10.1..v0.10.2
 [v0.10.1]: https://github.com/FnOio/grel-functions-java/compare/v0.10.0..v0.10.1
 [0.10.0]: https://github.com/FnOio/grel-functions-java/compare/v0.9.1..v0.10.0
 [0.9.1]: https://github.com/FnOio/grel-functions-java/compare/v0.9.0..v0.9.1

@@ -101,4 +101,4 @@ Tests are plain unit tests: each test class (for example `StringFunctionsTest`) 
 
 [RELEASE.md](RELEASE.md) holds the steps, performed with `bump-version.sh`.
 
-Versions carry a `v` prefix (for example `v0.10.1`). JitPack builds the artifact from the GitHub tag with the JDK set in `jitpack.yml`.
+`pom.xml` holds the plain version (`X.Y.Z`); the tag carries a `v` prefix (`vX.Y.Z`). JitPack builds the artifact from the GitHub tag with the JDK set in `jitpack.yml` and names the version after the tag, so consumers depend on `vX.Y.Z`.
