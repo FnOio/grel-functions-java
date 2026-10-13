@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## [0.11.1] - 2026-10-13
+
 ### Changed
 
 - `functions_grel.ttl` updated
@@ -151,6 +153,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - removed deprecated GREL functions
 
+[0.11.1]: https://github.com/FnOio/grel-functions-java/compare/v0.10.1..v0.10.2
 [0.11.0]: https://github.com/FnOio/grel-functions-java/compare/v0.10.1..v0.10.2
 [0.10.2]: https://github.com/FnOio/grel-functions-java/compare/v0.10.1..v0.10.2
 [v0.10.1]: https://github.com/FnOio/grel-functions-java/compare/v0.10.0..v0.10.1
