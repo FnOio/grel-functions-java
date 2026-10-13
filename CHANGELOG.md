@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## [0.11.0] - 2026-10-13
+
 ### Added
 - `functions_grel.ttl` in the jar: the FnO descriptions of all GREL functions, next to `grel_java_mapping.ttl`. Each description follows its Java method; It is release 2026-10-12 of grel-functions-fno, copied with `sync-descriptions.sh`; `FnODescriptionsTest` checks that every mapped function is described once.
 
@@ -145,6 +147,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - removed deprecated GREL functions
 
+[0.11.0]: https://github.com/FnOio/grel-functions-java/compare/v0.10.1..v0.10.2
 [0.10.2]: https://github.com/FnOio/grel-functions-java/compare/v0.10.1..v0.10.2
 [v0.10.1]: https://github.com/FnOio/grel-functions-java/compare/v0.10.0..v0.10.1
 [0.10.0]: https://github.com/FnOio/grel-functions-java/compare/v0.9.1..v0.10.0
