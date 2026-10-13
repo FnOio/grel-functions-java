@@ -22,7 +22,7 @@ mvn install
 ## Quick start
 
 `src/main/java/io/fno/grel` contains the functions as public static methods, described as in [GREL].
-`src/main/resources/grel_java_mapping.ttl` [maps](https://fno.io/spec/#ontology-concrete) them to the [FnO] function descriptions at <http://users.ugent.be/~bjdmeest/function/grel.ttl#>; [HANDBOOK.md](HANDBOOK.md) explains the mapping file.
+`src/main/resources/functions_grel.ttl` holds their [FnO] function descriptions, and `src/main/resources/grel_java_mapping.ttl` [maps](https://fno.io/spec/#ontology-concrete) those descriptions to the methods. The jar ships both, so an FnO function handler can load them from the classpath; [HANDBOOK.md](HANDBOOK.md) explains the two files.
 
 ## Testing
 

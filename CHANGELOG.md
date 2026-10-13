@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+### Added
+- `functions_grel.ttl` in the jar: the FnO descriptions of all GREL functions, next to `grel_java_mapping.ttl`. Each description follows its Java method; It is release 2026-10-12 of grel-functions-fno, copied with `sync-descriptions.sh`; `FnODescriptionsTest` checks that every mapped function is described once.
+
 ### Changed
 - `bump-version.sh` takes the version without `v` (`X.Y.Z`, as in `pom.xml`) and tags it `vX.Y.Z`; the README snippet shows the JitPack version `vX.Y.Z`.
 

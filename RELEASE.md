@@ -9,6 +9,7 @@ Step-by-step instructions for publishing a release. [HANDBOOK.md](HANDBOOK.md) (
 - Push access to `origin` (https://gitlab.ilabt.imec.be/KNoWS/fno/lib/grel-functions-java).
 - You are on `development`, up to date with `origin/development`, with a clean working tree.
 - The tests pass: `mvn verify`.
+- `./sync-descriptions.sh --check` reports that `functions_grel.ttl` is a grel-functions-fno release.
 - `## Unreleased` in `CHANGELOG.md` lists everything since the last release.
 - Pick the version with [Semantic Versioning](https://semver.org/), in the format `X.Y.Z` (written `<version>` below; the tag and the JitPack version are `v<version>`). `pom.xml` holds the next patch as `-SNAPSHOT`: release that patch, or a higher minor or major version when the changelog has new features or breaking changes.
 
