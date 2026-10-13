@@ -27,7 +27,7 @@ grel:dataset
     dcterms:title        "GREL Fno Descriptions"@en ;
     dcterms:description  "The FnO descriptions of the GREL functions" ;
     dcterms:contributor  <https://ben.de-meester.org/#me> ;
-    dcterms:modified     "2026-10-12"^^xsd:date ;
+    dcterms:modified     "2026-10-13"^^xsd:date ;
     cc:license           <http://creativecommons.org/license/by/3.0/> ;
     dcterms:issued       "2016-12-15"^^xsd:date ;
     dcterms:rights       "Copyright © Ghent University -- imec -- IDLab"@en ;
@@ -1135,7 +1135,7 @@ grel:date_diff
    fno:name            "diff" ;
    dcterms:description "diff" ;
    fno:expects         ( grel:param_datetime_d grel:param_datetime_d2 grel:param_string_timeunit ) ;
-   fno:returns         ( grel:stringOut ) .
+   fno:returns         ( grel:output_number ) .
 
 grel:param_datetime_d
    a             fno:Parameter ;
@@ -1486,7 +1486,7 @@ grel:math_even
     fno:name            "even";
     dcterms:description "even";
     fno:expects         (grel:param_dec_n);
-    fno:returns         (grel:output_decimal).
+    fno:returns         (grel:output_number).
 
 #ODD
 grel:math_odd
@@ -1494,7 +1494,7 @@ grel:math_odd
     fno:name            "odd";
     dcterms:description "odd";
     fno:expects         (grel:param_dec_n);
-    fno:returns         (grel:output_decimal).
+    fno:returns         (grel:output_number).
 
 #FACT
 grel:math_fact
